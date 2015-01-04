@@ -1,0 +1,114 @@
+{{ include ./layout/header.ejs }}
+    <div id="container">
+
+    </div>
+
+    <script type="text/template" id="T_SignIn">
+        <section>
+            <div id="signIn">
+                <h1>
+                    Welcome &nbsp; To &nbsp; Excelsior &nbsp; Blog
+                </h1>
+                <form id="signInForm" action="">
+                    <div>
+                        <input type="text" id="user_name" name="user_name" placeholder="请输入你的用户名" tabindex="1" autocomplete="off"/>
+                    </div>
+                    <div>
+                        <input type="password" id="password" name="password" placeholder="请输入你的密码" tabindex="2" autocomplete="off"/>
+                    </div>
+                    <div>
+                        <button id="signInBtn">登录</button>
+                    </div>
+                  </form>
+              </div>
+        </section>
+    </script>
+
+
+    <script type="text/template" id="T_Index">
+        <header id="header">
+            <div class="wrapper">
+                <div class="declare">
+                    <img src="/images/face.png"/>
+                    <h1>一百个梦里九十九个有你</h1>
+                </div>
+                <div class="nav">
+                    <nav id="mainNav">
+                        <ul>
+                            <li><a href="javascritp:void(0)">杂谈</a></li>
+                            <li><a href="javascritp:void(0)">杂谈</a></li>
+                            <li><a href="javascritp:void(0)">杂谈</a></li>
+                        </ul>
+                    </nav>
+                    <i id="phoneNavShowBtn" class="iconfont">&#x343a;</i>
+                    <nav id="phoneNav">
+                        <ul>
+                            <li><i id="phoneNavHideBtn" class="iconfont"> &#xf003e;</i></li>
+                            <li>
+                                <input type="text" name="search", id="search"/>
+                                <i id="searchBtn" class="iconfont">&#xf00a8;</i>
+                            </li>
+                            <li><a href="javascritp:void(0)">杂谈</a></li>
+                            <li><a href="javascritp:void(0)">杂谈</a></li>
+                            <li><a href="javascritp:void(0)">杂谈</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <section id="articles">
+            <article>
+                <% articles.forEach(function (article, index) { %>
+                    <h2><%= article.title %></h2>
+                    <p><%= article.content %></p>
+                <%  }); %>
+            </article>
+        </section>
+    </script>
+
+
+    <script type="text/template" id="T_AdminIndex">
+        <section>
+            <p>
+              第三方规划局
+            </p>
+        </section>
+    </script>
+
+
+    <script type="text/template" id="T_PostArticle">
+        <header id="postArticleNav">
+            <nav>
+                <ul>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="">首页</a></li>
+                    <li><a href="">发表</a></li>
+                    <li><a href="">管理</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section id="postArticle">
+            <h3>发表新文章</h3>
+
+            <form id="postArticleForm" action="">
+                <div>
+                    <input type="text" name="title" tabindex="1" autocomplete="off"/>
+                </div>
+                <div>
+                    <textarea name="content" id="content" placeholder="请输入内容"></textarea>
+                </div>
+                <div>
+                    <button id="postArticleBtn">发表</button>
+                </div>
+            </form>
+        </section>
+    </script>
+
+
+{{ include ./layout/footer.ejs }}
+
+
+
+
+
+

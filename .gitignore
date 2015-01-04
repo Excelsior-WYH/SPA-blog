@@ -1,0 +1,7 @@
+#ignore Files
+.idea
+.sass-cache
+node_modules
+ise.psd
+ise.jpg
+data
