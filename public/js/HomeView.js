@@ -5,7 +5,7 @@
     var V_Index = Backbone.View.extend({
         el: '#container',
         template: _.template($('#T_Index').html()),
-        constructor: function (viewData) {
+        initialize: function (viewData) {
             var _this = this;
             c_articles.fetch({
                 success: function (collection, response) {
@@ -28,8 +28,8 @@
             'touchstart #phoneNavShowBtn': 'showPhoneNavFunc', // 菜单显示
             'touchstart #phoneNavHideBtn': 'hidePhoneNavFunc', // 菜单隐藏
             'touchstart #phoneNav': 'hidePhoneNavToo',
-            'click #articles span:eq(2)': 'postCommentFunc', // 发表评论
-            'click #articles span:eq(3)': 'articlePraiseFunc' // 发表评论
+            'click #articles .comment': 'postCommentFunc', // 发表评论
+            'click #articles .praise': 'articlePraiseFunc' // 发表评论
         },
         showPhoneNavFunc: function (event) {
             event.preventDefault();
@@ -69,7 +69,6 @@
         hidePhoneNavToo: function (event) {
             if (parseInt($('#phoneNav').css('opacity')) == 1) {
                 var _this = this;
-                console.log(_this)
                 if ($(event.target) != $('#phoneNav')){
                     console.log($(event.target));
                     console.log($('#phoneNav'))
@@ -80,15 +79,13 @@
         },
         postCommentFunc: function (event) {
             event.preventDefault();
-            router.navigate('/detail/' + 2);
+            var _this = this;
+            console.log(_this);
+            // router.navigate('detail/' + 2, {trigger: true});
         },
         articlePraiseFunc: function (event) {
             event.preventDefault();
-            console.log($(event.target));
-            // $(event.target).animate({
-            //     'fontSize': 1.2 + 'rem'
-            // }, 'slow');
-            // $(event.target).html('&#xe60e;');
+            $(event.target).html('&#xe60e;');
         }
     });
     
@@ -110,7 +107,7 @@
         render: function () {
             var template = this.template;
 
-        },
+        }
 
     }) 
 

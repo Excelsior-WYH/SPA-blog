@@ -2,6 +2,7 @@
 var session = require('express-session'); // session
 var express = require('express'),
     path = require('path'),
+    debug = require('debug')('excelsior'),
     favicon = require('serve-favicon'),
     logger = require('morgan'),
     bodyParser = require('body-parser'),
@@ -17,6 +18,7 @@ var express = require('express'),
 // express入口
 var app = express(); 
 
+
 // 连接数据库
 var dbConfig = "mongodb://localhost/excelsior";
     mongoose.connect(dbConfig);
@@ -27,6 +29,7 @@ var router = require('./app/router');
 // 视图模板设置
 app.set('views', path.join(__dirname, './app/views'));
 app.set('view engine', 'ejs');
+app.set('port', process.env.PORT || 3000);
 
 app.use(favicon(__dirname + '/public/favicon.ico')); // icon图标
 app.use(logger('dev')); // 日志记录
@@ -44,6 +47,10 @@ app.use(session({
         colllection: "sessions"
     })
 }))
+
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
 
 // session存储
 app.use(function(request, response, next){
@@ -81,5 +88,7 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
+
 
 module.exports = app;

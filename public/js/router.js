@@ -8,8 +8,7 @@
             'detail/:_id': 'articleDetail',
             'admin': 'adminSignIn',
             'admin/index': 'adminIndex',
-            'admin/post': 'postArticle',
-
+            'admin/post': 'postArticle'
         }
     });
     var router = new Router();
@@ -19,7 +18,7 @@
         new V_Index();
     });
     router.on('route:articleDetail', function () {
-        new V_Detail();
+        // new V_Detail();
     });
     router.on('route:adminSignIn', function () {
         (function () {
