@@ -1,6 +1,5 @@
 
 var session = require('express-session'); // session
-<<<<<<< HEAD
 var express = require('express'),
     path = require('path'),
     favicon = require('serve-favicon'),
@@ -11,15 +10,9 @@ var express = require('express'),
     mongoose = require('mongoose'), // mongoose
     mongoStore = require('connect-mongo')(session), // session持久化
     ejs = require('ejs');
-
     ejs.open = "{{";
     ejs.close = "}}";
-=======
-var mongo = require('mongodb'); // mongodb
-var mongoose = require('mongoose'); // mongoose
-var mongoStore = require('connect-mongo')(session); // session持久化
-var _ = require('underscore'); // 引入underscore
->>>>>>> 592c6cae0907e46d7d74739cec4dafd9a966e85a
+
 
 // express入口
 var app = express(); 
@@ -34,7 +27,6 @@ var router = require('./app/router');
 // 视图模板设置
 app.set('views', path.join(__dirname, './app/views'));
 app.set('view engine', 'ejs');
-
 
 app.use(favicon(__dirname + '/public/favicon.ico')); // icon图标
 app.use(logger('dev')); // 日志记录
@@ -89,6 +81,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
 
 module.exports = app;

@@ -1,10 +1,4 @@
 @font-face {
-  font-family: 'Amatic-Bold';
-  src: url("../font/Amatic-Bold.ttf");
-  src: url("../font/Amatic-Bold.eot?#iefix") format("embedded-opentype"), url("../font/Amatic-Bold.woff") format("woff"), url("../font/Amatic-Bold.ttf") format("truetype"), url("../font/Amatic-Bold.svg#NeuesBauenDemo") format("svg");
-  font-weight: bold;
-  font-style: normal; }
-@font-face {
   font-family: 'Author';
   src: url("../font/author.ttf");
   font-weight: bold;
@@ -19,22 +13,70 @@
   src: url("../font/iconfont.ttf");
   font-weight: normal;
   font-style: normal; }
+@font-face {
+  font-family: "iconfont";
+  src: url("../font/iconfont.eot");
+  /* IE9*/
+  src: url("../font/iconfont.eot?#iefix") format("embedded-opentype"), url("../font/iconfont.woff") format("woff"), url("../font/iconfont.ttf") format("truetype"), url("../font/iconfont.svg#iconfont") format("svg");
+  /* iOS 4.1- */ }
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 18px;
-  font-style: normal;
+  font-size: 16px;
+  font-style: normal; 
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon-guanbi:before {
-  content: "\f003e"; }
+.icon-rili:before {
+  content: "\e610"; }
 
-.icon-liebiao:before {
-  content: "\343a"; }
+.icon-kanguo:before {
+  content: "\e600"; }
 
-.icon-sousuo:before {
-  content: "\f00a8"; }
+.icon-xihuan:before {
+  content: "\e601"; }
+
+.icon-pinglun:before {
+  content: "\e602"; }
+
+.icon-liulan:before {
+  content: "\e603"; }
+
+.icon-ux14006382562102623:before {
+  content: "\e604"; }
+
+.icon-zhankai:before {
+  content: "\e605"; }
+
+.icon-daohang:before {
+  content: "\e606"; }
+
+.icon-icon:before {
+  content: "\e607"; }
+
+.icon-shouqi:before {
+  content: "\e608"; }
+
+.icon-huanyipi:before {
+  content: "\e609"; }
+
+.icon-pengyouquan:before {
+  content: "\e60a"; }
+
+.icon-xinlang:before {
+  content: "\e60b"; }
+
+.icon-weixin:before {
+  content: "\e60c"; }
+
+.icon-gengduo:before {
+  content: "\e60d"; }
+
+.icon-xihuan1:before {
+  content: "\e60e"; }
+
+.icon-guanyuwo:before {
+  content: "\e60f"; }
 
 img {
   max-width: 100%;
@@ -152,11 +194,11 @@ body {
     #header .wrapper .declare h1 {
       padding: 0;
       margin: 0;
-      font-family: 'main';
+      font-family: 'Author';
       font-weight: 500;
-      color: #ffffff;
+      color: #fff;
       vertical-align: top;
-      margin: 2rem 0 0 1rem;
+      margin: 0.5rem 0 0 1rem;
       cursor: pointer; }
       @media screen and (min-width: 320px) and (max-width: 540px) {
         #header .wrapper .declare h1 {
@@ -164,82 +206,96 @@ body {
       #header .wrapper .declare h1:hover {
         transition: 1s ease-out;
         color: #e84c3d; }
-  #header .wrapper .nav {
+  #header .wrapper #mainNav {
+    width: 20rem;
+    height: 5rem;
     margin: 0 auto; }
-    #header .wrapper .nav #mainNav {
-      text-align: center; }
-      @media screen and (min-width: 320px) and (max-width: 540px) {
-        #header .wrapper .nav #mainNav {
-          display: none; } }
-      #header .wrapper .nav #mainNav ul {
-        padding: 0;
-        margin: 0; }
-        #header .wrapper .nav #mainNav ul li {
-          float: left; }
-    #header .wrapper .nav #phoneNavShowBtn {
-      position: absolute;
-      left: 1rem;
-      top: 1rem;
-      cursor: pointer;
-      display: none;
-      font-size: 2.2rem;
-      width: 2rem;
-      height: 2rem; }
-      @media screen and (min-width: 320px) and (max-width: 540px) {
-        #header .wrapper .nav #phoneNavShowBtn {
-          display: block; } }
-      #header .wrapper .nav #phoneNavShowBtn:hover {
-        transition: 0.2s;
-        font-size: 2.3rem; }
-    #header .wrapper .nav #phoneNav {
+    @media screen and (min-width: 320px) and (max-width: 540px) {
+      #header .wrapper #mainNav {
+        display: none; } }
+    #header .wrapper #mainNav ul {
       width: 20rem;
-      position: absolute;
-      top: 0;
-      left: -20rem;
-      opacity: 0;
-      display: block;
-      background: #333;
-      box-shadow: inset 0 0 5px 5px #222; }
-      #header .wrapper .nav #phoneNav ul {
-        width: 100%; }
-        #header .wrapper .nav #phoneNav ul li {
-          float: left;
-          width: 100%;
-          border-top: 1px solid #4d4d4d;
-          border-bottom: 1px solid #1a1a1a;
-          height: 3rem;
-          cursor: pointer; }
-          #header .wrapper .nav #phoneNav ul li:hover {
+      margin: 0 auto;
+      padding: 0;
+      margin: 0; }
+      #header .wrapper #mainNav ul li {
+        float: left;
+        background-color: rgba(25, 25, 25, 0.4);
+        margin: 1rem 1rem; }
+        #header .wrapper #mainNav ul li a {
+          padding: 0.5rem;
+          color: #D9D9D9;
+          font-size: 1.5rem; }
+          @media screen and (min-width: 1024px) and (max-width: 1920px) {
+            #header .wrapper #mainNav ul li a {
+              font-size: 1rem; } }
+          #header .wrapper #mainNav ul li a:hover {
             transition: 1s ease-out;
-            box-shadow: inset 0 0 15px 3px #222; }
-          #header .wrapper .nav #phoneNav ul li input {
-            float: left;
-            height: 2rem;
-            border: 0;
-            border-radius: 0.8rem;
-            padding-left: 0.5rem;
-            margin: 0.2rem 0 0 2rem;
-            color: #000000; }
-            #header .wrapper .nav #phoneNav ul li input:focus {
-              outline: none; }
-          #header .wrapper .nav #phoneNav ul li #phoneNavHideBtn {
-            cursor: pointer;
-            font-size: 2rem; }
-          #header .wrapper .nav #phoneNav ul li #searchBtn {
-            float: left;
-            text-indent: 0.2rem;
-            font-size: 2rem;
-            padding: 0.2rem 0 0 0.6rem; }
-          #header .wrapper .nav #phoneNav ul li a {
-            width: 100%;
-            height: 100%;
-            float: left;
-            display: block;
-            color: #dddddd;
-            font-size: 1.2rem;
-            line-height: 1.2rem;
-            font-family: "Author";
-            letter-spacing: 0.2rem; }
+            background-color: rgba(25, 25, 25, 0.7); }
+  #header .wrapper #phoneNavShowBtn {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    display: none;
+    font-size: 2.2rem;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer; }
+    @media screen and (min-width: 320px) and (max-width: 540px) {
+      #header .wrapper #phoneNavShowBtn {
+        display: block; } }
+    #header .wrapper #phoneNavShowBtn:hover {
+      transition: 0.2s;
+      font-size: 2.3rem; }
+  #header .wrapper #phoneNav {
+    width: 20rem;
+    position: absolute;
+    top: 0;
+    left: -20rem;
+    opacity: 0;
+    display: block;
+    background: #333;
+    box-shadow: inset 0 0 5px 5px #222; }
+    #header .wrapper #phoneNav ul {
+      width: 100%; }
+      #header .wrapper #phoneNav ul li {
+        float: left;
+        width: 100%;
+        border-top: 1px solid #4d4d4d;
+        border-bottom: 1px solid #1a1a1a;
+        height: 3rem;
+        cursor: pointer; }
+        #header .wrapper #phoneNav ul li:hover {
+          transition: 1s ease-out;
+          box-shadow: inset 0 0 15px 3px #222; }
+        #header .wrapper #phoneNav ul li input {
+          float: left;
+          height: 2rem;
+          border: 0;
+          border-radius: 0.8rem;
+          padding-left: 0.5rem;
+          margin: 0.2rem 0 0 2rem;
+          color: #000000; }
+          #header .wrapper #phoneNav ul li input:focus {
+            outline: none; }
+        #header .wrapper #phoneNav ul li #phoneNavHideBtn {
+          cursor: pointer;
+          font-size: 2rem; }
+        #header .wrapper #phoneNav ul li #searchBtn {
+          float: left;
+          text-indent: 0.2rem;
+          font-size: 2rem;
+          padding: 0.2rem 0 0 0.6rem; }
+        #header .wrapper #phoneNav ul li a {
+          width: 100%;
+          height: 100%;
+          float: left;
+          display: block;
+          color: #dddddd;
+          font-size: 1.2rem;
+          line-height: 1.2rem;
+          font-family: "Author";
+          letter-spacing: 0.2rem; }
 
 #articles {
   margin: 0 auto;
@@ -253,7 +309,7 @@ body {
     background: #fff;
     border: 1px solid #aaa;
     border-radius: 0.6rem;
-    box-shadow: 0px 0px 0.3rem rgba(0, 0, 0, 0.2); }
+    box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.2); }
     @media screen and (min-width: 320px) and (max-width: 540px) {
       #articles article {
         width: 25rem; } }
@@ -273,7 +329,6 @@ body {
         color: #e32d40; }
     #articles article p {
       min-height: 5rem;
-      font-family: "Author";
       font-weight: lighter;
       margin: 1.1rem 0.7rem 0 0.7rem;
       border-bottom: 1px solid #CCC;
@@ -286,9 +341,19 @@ body {
         box-shadow: 0px 0px 0.5rem rgba(68, 68, 68, 0.2); }
     #articles article p:first-letter {
       float: left;
-      font-size: 2.2rem;
-      font-weight: bold;
+      font-size: 2rem;
+      font-weight: lighter;
       color: #e32d40; }
+    #articles article div {
+      font-size: 0.8rem;
+      margin: 0.25rem 0.7rem;
+      text-align: left; }
+      #articles article div span {
+        margin-left: 0.4rem; }
+        #articles article div span i {
+          cursor: pointer; }
+      #articles article div span:first-child {
+        margin-left: 0; }
 
 #postArticleNav {
   margin: 2rem auto;
@@ -321,7 +386,7 @@ body {
         font-size: 1.7rem;
         color: #4298ba; }
 
-#postArticle {
+#postArticleMain {
   margin: 1.5rem auto;
   min-height: 30rem;
   padding: 2rem;
@@ -332,15 +397,15 @@ body {
   border-radius: 0.4rem;
   opacity: 0; }
   @media screen and (min-width: 320px) and (max-width: 540px) {
-    #postArticle {
+    #postArticleMain {
       width: 20rem; } }
-  #postArticle h3 {
+  #postArticleMain h3 {
     padding: 0;
     margin: 0;
     color: #84a099; }
-  #postArticle div {
+  #postArticleMain div {
     margin-top: 1rem; }
-    #postArticle div input {
+    #postArticleMain div input {
       width: 15rem;
       height: 1.4rem;
       padding: 0.2rem 0;
@@ -348,11 +413,14 @@ body {
       border-radius: 0.4rem;
       border: 1px solid #ccc; }
       @media screen and (min-width: 320px) and (max-width: 540px) {
-        #postArticle div input {
+        #postArticleMain div input {
           width: 20rem;
           height: 1.8rem;
           font-size: 1.4rem; } }
-    #postArticle div textarea {
+      #postArticleMain div input:focus {
+        outline: none;
+        border: 1px solid #84a099; }
+    #postArticleMain div textarea {
       width: 30rem;
       min-height: 10rem;
       font-size: 0.9rem;
@@ -360,13 +428,14 @@ body {
       border: 1px solid #ccc;
       padding: 0.5rem; }
       @media screen and (min-width: 320px) and (max-width: 540px) {
-        #postArticle div textarea {
+        #postArticleMain div textarea {
           width: 19rem;
           height: 12rem; } }
-      #postArticle div textarea:focus {
-        outline: auto;
+      #postArticleMain div textarea:focus {
+        outline: none;
+        border: 1px solid #84a099;
         border-radius: 0.4rem; }
-    #postArticle div button {
+    #postArticleMain div button {
       border: 1px solid transparent;
       display: inline-block;
       width: 3rem;
@@ -378,10 +447,10 @@ body {
       letter-spacing: 0.2rem;
       border-radius: 0.4rem; }
       @media screen and (min-width: 320px) and (max-width: 540px) {
-        #postArticle div button {
+        #postArticleMain div button {
           width: 4.5rem;
           height: 2.4rem; } }
-      #postArticle div button:hover {
+      #postArticleMain div button:hover {
         transition: 1s;
         background: #00755E; }
 

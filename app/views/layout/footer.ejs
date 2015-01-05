@@ -16,10 +16,7 @@
 	<script src="/js/Collection.js"></script>
 	<script>
 	   $(function(){
-	      Backbone.history.start();
-	      $('#phoneNav').css({
-	         'height': $(window).height()
-	      });
+	      Backbone.history.start({pushState: true});
 	   })
 	</script>
 	

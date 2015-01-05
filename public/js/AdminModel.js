@@ -59,12 +59,12 @@
             })
         },
         default : {
-            user_name : "DB",
-            password : "hahaha"
+            title : "DB",
+            content : "hahaha"
         },
-        validate : function (attributes) {
+        validate : function (attributes, options) {
             if(attributes.title == '') {
-                return 'buduia';
+                
             }
         }
     })

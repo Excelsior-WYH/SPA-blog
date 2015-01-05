@@ -1,8 +1,8 @@
-    var express = require('express');
-    var UserController = require('./controller/UserController');
-    var ArticleController = require('./controller/ArticleController');
-    var IndexController = require('./controller/IndexController');
-    var router = express.Router();
+    var express = require('express'),
+        router = express.Router(),
+        UserController = require('./controller/UserController'),
+        ArticleController = require('./controller/ArticleController'),
+        IndexController = require('./controller/IndexController');
 
     router.get('/', IndexController.index); //　入口
     router.get('/index', ArticleController.articlesList); // 首页

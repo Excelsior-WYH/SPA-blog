@@ -5,9 +5,11 @@
     var Router = Backbone.Router.extend({
         routes: {
             '': 'index',
+            'detail/:_id': 'articleDetail',
             'admin': 'adminSignIn',
             'admin/index': 'adminIndex',
-            'admin/post': 'postArticle'
+            'admin/post': 'postArticle',
+
         }
     });
     var router = new Router();
@@ -15,6 +17,9 @@
 
     router.on('route:index', function () {
         new V_Index();
+    });
+    router.on('route:articleDetail', function () {
+        new V_Detail();
     });
     router.on('route:adminSignIn', function () {
         (function () {
@@ -30,7 +35,7 @@
     router.on('route:postArticle', function () {
         (function () {
             new V_PostArticle();
-            showWithAnimate($('#postArticle'), 800);
+            showWithAnimate($('#postArticleMain'), 800);
             changeTitle('发表文章');
         })();
     });

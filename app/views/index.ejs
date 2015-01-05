@@ -1,7 +1,98 @@
 {{ include ./layout/header.ejs }}
+
     <div id="container">
 
     </div>
+
+    <script type="text/template" id="T_Index">
+        <header id="header">
+            <div class="wrapper">
+                <div class="declare">
+                    <img src="/images/face.png"/>
+                    <h1>一百个梦里九十九个有你</h1>
+                </div>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="javascritp:void(0)">杂谈</a></li>
+                        <li><a href="javascritp:void(0)">杂谈</a></li>
+                        <li><a href="javascritp:void(0)">杂谈</a></li>
+                    </ul>
+                </nav>
+                <i id="phoneNavShowBtn" class="iconfont">&#xe606;</i>
+                <nav id="phoneNav">
+                    <ul>
+                        <li><i id="phoneNavHideBtn" class="iconfont">&#xe607;</i></li>
+                        <li>
+                            <input type="text" name="search", id="search"/>
+                            <i id="searchBtn" class="iconfont">&#xf00a8;</i>
+                        </li>
+                        <li><a href="javascritp:void(0)">杂谈</a></li>
+                        <li><a href="javascritp:void(0)">杂谈</a></li>
+                        <li><a href="javascritp:void(0)">杂谈</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <section id="articles">
+            <% articles.forEach(function (article, index) { %>
+                <article>
+                    <a href=""><h2><%= article.title %></h2></a>
+                    <p style="font-family: '微软雅黑';"><%= article.content %></p>
+                    <div>
+                        <span>
+                            <i class="iconfont">&#xe610;</i>
+                            2014-12-23
+                        </span>
+                        <span>
+                            <i class="iconfont">&#xe600;</i>
+                            10
+                        </span>
+                        <span>
+                            <i class="iconfont">&#xe602;</i>
+                            10
+                        </span>
+                        <span>
+                            <i class="iconfont">&#xe601;</i>
+                            20
+                        </span>
+                    </div>
+                </article>
+            <%  }); %>
+        </section>
+    </script>
+    
+
+    <script type="text/template" id="T_ArticleDetail">
+        <header id="header">
+            <div class="wrapper">
+                <div class="declare">
+                    <img src="/images/face.png"/>
+                    <h1>一百个梦里九十九个有你</h1>
+                </div>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="javascritp:void(0)">杂谈</a></li>
+                        <li><a href="javascritp:void(0)">杂谈</a></li>
+                        <li><a href="javascritp:void(0)">杂谈</a></li>
+                    </ul>
+                </nav>
+                <i id="phoneNavShowBtn" class="iconfont">&#xe606;</i>
+                <nav id="phoneNav">
+                    <ul>
+                        <li><i id="phoneNavHideBtn" class="iconfont">&#xe607;</i></li>
+                        <li>
+                            <input type="text" name="search", id="search"/>
+                            <i id="searchBtn" class="iconfont">&#xf00a8;</i>
+                        </li>
+                        <li><a href="javascritp:void(0)">杂谈</a></li>
+                        <li><a href="javascritp:void(0)">杂谈</a></li>
+                        <li><a href="javascritp:void(0)">杂谈</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+    </script>
 
     <script type="text/template" id="T_SignIn">
         <section>
@@ -21,48 +112,6 @@
                     </div>
                   </form>
               </div>
-        </section>
-    </script>
-
-
-    <script type="text/template" id="T_Index">
-        <header id="header">
-            <div class="wrapper">
-                <div class="declare">
-                    <img src="/images/face.png"/>
-                    <h1>一百个梦里九十九个有你</h1>
-                </div>
-                <div class="nav">
-                    <nav id="mainNav">
-                        <ul>
-                            <li><a href="javascritp:void(0)">杂谈</a></li>
-                            <li><a href="javascritp:void(0)">杂谈</a></li>
-                            <li><a href="javascritp:void(0)">杂谈</a></li>
-                        </ul>
-                    </nav>
-                    <i id="phoneNavShowBtn" class="iconfont">&#x343a;</i>
-                    <nav id="phoneNav">
-                        <ul>
-                            <li><i id="phoneNavHideBtn" class="iconfont"> &#xf003e;</i></li>
-                            <li>
-                                <input type="text" name="search", id="search"/>
-                                <i id="searchBtn" class="iconfont">&#xf00a8;</i>
-                            </li>
-                            <li><a href="javascritp:void(0)">杂谈</a></li>
-                            <li><a href="javascritp:void(0)">杂谈</a></li>
-                            <li><a href="javascritp:void(0)">杂谈</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        <section id="articles">
-            <article>
-                <% articles.forEach(function (article, index) { %>
-                    <h2><%= article.title %></h2>
-                    <p><%= article.content %></p>
-                <%  }); %>
-            </article>
         </section>
     </script>
 
@@ -87,7 +136,7 @@
                 </ul>
             </nav>
         </header>
-        <section id="postArticle">
+        <section id="postArticleMain">
             <h3>发表新文章</h3>
 
             <form id="postArticleForm" action="">
@@ -103,6 +152,7 @@
             </form>
         </section>
     </script>
+
 
 
 {{ include ./layout/footer.ejs }}
