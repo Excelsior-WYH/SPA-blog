@@ -1,7 +1,6 @@
 
     var M_Index = Backbone.Model.extend({
         url: '/index',
-        idAttribute: '_id',
         initialize: function(){
             this.bind('error', function (model, error) {
                 alert(error.status  + " Error : " +  error.responseText);
@@ -59,8 +58,10 @@
             })
         },
         default : {
+            _id: '64324376',
             title : "DB",
-            content : "hahaha"
+            content : "hahaha",
+            postDate: '2013'
         },
         validate : function (attributes, options) {
             if(attributes.title == '') {

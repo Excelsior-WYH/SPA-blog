@@ -61,6 +61,7 @@ app.use(function(request, response, next){
 // 使用路由
 app.use('/', router);
 app.use('/post', router);
+app.use('/article/praise', router);
 
 // 404处理
 app.use(function(req, res, next) {

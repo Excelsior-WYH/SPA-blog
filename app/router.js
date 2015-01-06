@@ -8,6 +8,7 @@
     router.get('/index', ArticleController.articlesList); // 首页
     router.post('/signin', UserController.signIn);
     router.post('/post', ArticleController.postArticle);
+    router.post('/article/praise', ArticleController.articlePraise);
 
     module.exports = router;
 

@@ -9,8 +9,8 @@
             var _this = this;
             c_articles.fetch({
                 success: function (collection, response) {
-                    if(response.status === 200){
-                        _this.render({articles: response.articles});
+                    if(collection.models){
+                        _this.render({articles: response});
                     }else {
                         viewData = {};
                     }
@@ -80,12 +80,23 @@
         postCommentFunc: function (event) {
             event.preventDefault();
             var _this = this;
-            console.log(_this);
-            // router.navigate('detail/' + 2, {trigger: true});
+            var _id = $(event.currentTarget).data('id');
+            console.log(c_articles.get(_id));
+            router.navigate('detail/' + 2, {trigger: true});
         },
         articlePraiseFunc: function (event) {
-            event.preventDefault();
-            $(event.target).html('&#xe60e;');
+            var _this = this;
+            var self = $(event.currentTarget); // 点击SPAN元素
+            m_praise.set({articleID: self.data('id')});
+            m_praise.save({articleID: self.data('id')},{
+                success: function (model, response) {
+                    console.log(model);
+                    console.log(response);
+                },
+                error: function (model, response) {
+
+                }
+            });
         }
     });
     
@@ -98,18 +109,18 @@
      * @param  {[type]} [description]
      * @return {[type]} [description]
      */
-    var V_Detail = Backbone.View.extend({
-        el: '#container',
-        initialize: function () {
+    // var V_Detail = Backbone.View.extend({
+    //     el: '#container',
+    //     initialize: function () {
 
-        },
-        template: _.template($('#T_ArticleDetail')),
-        render: function () {
-            var template = this.template;
+    //     },
+    //     template: _.template($('#T_ArticleDetail')),
+    //     render: function () {
+    //         var template = this.template;
 
-        }
+    //     }
 
-    }) 
+    // }) 
 
 
 

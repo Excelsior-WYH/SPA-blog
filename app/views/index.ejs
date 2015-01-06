@@ -40,20 +40,16 @@
                     <p style="font-family: '微软雅黑';"><%= article.content %></p>
                     <div>
                         <span>
-                            <i class="iconfont">&#xe610;</i>
-                            2014-12-23
+                            <i class="iconfont">&#xe610;</i>2014-12-23
                         </span>
                         <span>
-                            <i class="iconfont">&#xe600;</i>
-                            10
+                            <i class="iconfont">&#xe600;</i>10
                         </span>
-                        <span class="comment">
+                        <span class="comment" data-id="<%= article._id %>">
                             <i class="iconfont">&#xe602;</i>
-                            10
                         </span>
-                        <span class="praise">
-                            <i class="iconfont">&#xe601;</i>
-                            20
+                        <span class="praise" data-id="<%= article._id %>">
+                            <i class="iconfont">&#xe601;</i><%= article.praiseCount %>
                         </span>
                     </div>
                 </article>

@@ -6,6 +6,7 @@
         model: M_Article,
         url: '/index',
         fetchArticles: function () {
+            
         }
     });
 
