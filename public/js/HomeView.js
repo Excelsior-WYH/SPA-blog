@@ -1,18 +1,35 @@
 
+    var V_Header = Backbone.View.extend({
+        template: _.template($('#T_Header').html())
+    });
+    var V_Footer = Backbone.View.extend({
+        template: _.template($('#T_Footer').html())
+    });
+    
+    var v_header = new V_Header();
+    var v_footer = new V_Footer();
+
     /**
      *  首页视图
      */
     var V_Index = Backbone.View.extend({
         el: '#container',
         template: _.template($('#T_Index').html()),
-        initialize: function (viewData) {
-            var _this = this;
+        initialize: function () {
+            this.render();
+        },
+        render: function () {
+            var that = this;
+            $(that.el).html(v_header.template()); // 头部
             c_articles.fetch({
                 success: function (collection, response) {
                     if(collection.models){
-                        _this.render({articles: response});
-                    }else {
-                        viewData = {};
+                        var template = that.template({articles: response});
+                        $(that.el).append(template); // 主体
+                        $(that.el).append(v_footer.template()); // 尾部
+                        $.each($('#articles article'), function (index, article) {
+                            index % 2 === 0 ? that.articleShowAnimate(article, 'left') : that.articleShowAnimate(article, 'right');
+                        });
                     }
                 },
                 error: function () {
@@ -20,16 +37,40 @@
                 }
             });
         },
-        render: function (viewData) {
-            var template = this.template(viewData);
-            $(this.el).html(template);
-        },
         events: {
             'touchstart #phoneNavShowBtn': 'showPhoneNavFunc', // 菜单显示
             'touchstart #phoneNavHideBtn': 'hidePhoneNavFunc', // 菜单隐藏
             'touchstart #phoneNav': 'hidePhoneNavToo',
+            'click #articles article h2': 'articleDetailFunc', // 跳转详情页
             'click #articles .comment': 'postCommentFunc', // 发表评论
             'click #articles .praise': 'articlePraiseFunc' // 发表评论
+        },
+        articleShowAnimate: function (element, position) {
+            $(element).css(position, -5 + 'rem');
+            switch (position) {
+                case 'left':
+                    $(element).animate({
+                        'opacity': 1,
+                        'left': 0
+                    }, {
+                        easing: 'easeInOutQuad',
+                        duration: 1000,
+                        complete: {
+                            // $(element).css({'position': 'auto'});
+                        }
+                    });
+                case 'right':
+                    $(element).animate({
+                        'opacity': 1,
+                        'right': 0
+                    }, {
+                        easing: 'easeInOutQuad',
+                        duration: 1000,
+                        complete: {
+                            // $(element).css({'position': 'auto'});
+                        }
+                    });
+            }
         },
         showPhoneNavFunc: function (event) {
             event.preventDefault();
@@ -42,11 +83,11 @@
                 easing: 'easeInOutQuad',
                 duration: 350,
                 complete: function () {
-                    // /**something**/
-                    // document.addEventListener('touchmove', function(event) {
-                    //     if(event.target.type == 'range') return;
-                    //     event.preventDefault();
-                    // })
+                    /**something**/
+                    document.addEventListener('touchmove', function(event) {
+                        if(event.target.type == 'range') return;
+                        event.preventDefault();
+                    })
                 }
             });
         },
@@ -59,10 +100,10 @@
                 duration: 350,
                 complete: function () {
                     /**something**/
-                    // document.addEventListener('touchmove', function(event) {
-                    //     !event.preventDefault();
-                    //     return true;
-                    // });
+                    document.addEventListener('touchmove', function(event) {
+                        !event.preventDefault();
+                        return true;
+                    });
                 }
             });
         },
@@ -77,6 +118,10 @@
                 }
             }
         },
+        articleDetailFunc: function (event) {
+            event.preventDefault();
+            router.navigate('detail/' + $(event.currentTarget).data('id'), {trigger: true});
+        },
         postCommentFunc: function (event) {
             event.preventDefault();
             var _this = this;
@@ -87,11 +132,14 @@
         articlePraiseFunc: function (event) {
             var _this = this;
             var self = $(event.currentTarget); // 点击SPAN元素
-            m_praise.set({articleID: self.data('id')});
-            m_praise.save({articleID: self.data('id')},{
+            m_praise.save({articleID: self.data('id')}, {
                 success: function (model, response) {
-                    console.log(model);
-                    console.log(response);
+                    if(response.status === 100){
+                        alert(response.info);
+                    }else {
+                        self.find('i').css('color', '#E87A90').html('&#xe60e;');
+                        self.find('b').html(parseInt(self.find('b').html()) + 1);
+                    }
                 },
                 error: function (model, response) {
 
@@ -109,18 +157,44 @@
      * @param  {[type]} [description]
      * @return {[type]} [description]
      */
-    // var V_Detail = Backbone.View.extend({
-    //     el: '#container',
-    //     initialize: function () {
+    var V_Detail = Backbone.View.extend({
+        el: '#container',
+        initialize: function (_id) {
+            this.render(_id);
+        },
+        template: _.template($('#T_ArticleDetail').html()),
+        render: function (_id) {
+            var that = this;
+            $(this.el).html(v_header.template()); // 头部
+            if(c_articles.get(_id) === undefined) {
+                c_articles.fetch({
+                    success: function (collection, response) {
+                        collection.models !== undefined ? that.pushViewData(_id) : alert('false');
+                    }
+                });
+            }else {
+                that.pushViewData(_id);
+            }
+        },
+        pushViewData: function (_id) {
+            var template = this.template({article: c_articles.get(_id).attributes});
+            $(this.el).append(template);
+            var $article = $('#article article');
+            var height = $article.css('height');
+            $article.css('min-height', 1);
+            $article.animate({
+                'opacity': 1,
+                'heihgt': height + 'rem'
+            }, {
+                easing: 'easeInOutQuad',
+                duration: 3500
+            });
+            $(this.el).append(v_footer.template()); // 尾部
+        },
+        events: {
 
-    //     },
-    //     template: _.template($('#T_ArticleDetail')),
-    //     render: function () {
-    //         var template = this.template;
-
-    //     }
-
-    // }) 
+        }
+    });
 
 
 

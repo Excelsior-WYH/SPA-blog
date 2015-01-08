@@ -17,8 +17,8 @@
     router.on('route:index', function () {
         new V_Index();
     });
-    router.on('route:articleDetail', function () {
-        // new V_Detail();
+    router.on('route:articleDetail', function (_id) {
+        new V_Detail(_id);
     });
     router.on('route:adminSignIn', function () {
         (function () {

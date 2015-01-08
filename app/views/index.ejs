@@ -4,7 +4,7 @@
 
     </div>
 
-    <script type="text/template" id="T_Index">
+    <script type="text/template" id="T_Header">
         <header id="header">
             <div class="wrapper">
                 <div class="declare">
@@ -33,23 +33,31 @@
                 </nav>
             </div>
         </header>
+    </script>
+
+
+    <script type="text/template" id="T_Index">
         <section id="articles">
             <% articles.forEach(function (article, index) { %>
                 <article>
-                    <a href=""><h2><%= article.title %></h2></a>
-                    <p style="font-family: '微软雅黑';"><%= article.content %></p>
+                    <a href=""><h2 data-id="<%= article._id %>"><%= article.title %></h2></a>
+                    <p><%= article.content %></p>
                     <div>
                         <span>
-                            <i class="iconfont">&#xe610;</i>2014-12-23
+                            <i class="iconfont">&#xe610;</i>
+                            <b>2014-12-23</b>
                         </span>
                         <span>
-                            <i class="iconfont">&#xe600;</i>10
+                            <i class="iconfont">&#xe600;</i>
+                            <b>10</b>
                         </span>
                         <span class="comment" data-id="<%= article._id %>">
                             <i class="iconfont">&#xe602;</i>
+                            <b>10</b>
                         </span>
                         <span class="praise" data-id="<%= article._id %>">
-                            <i class="iconfont">&#xe601;</i><%= article.praiseCount %>
+                            <i class="iconfont">&#xe601;</i>
+                            <b><%= article.praiseCount %></b>
                         </span>
                     </div>
                 </article>
@@ -59,36 +67,49 @@
     
 
     <script type="text/template" id="T_ArticleDetail">
-        <header id="header">
-            <div class="wrapper">
-                <div class="declare">
-                    <img src="/images/face.png"/>
-                    <h1>一百个梦里九十九个有你</h1>
+        <div id="article">
+            <article>
+                <a href=""><h2 data-id="<%= article._id %>"><%= article.title %></h2></a>
+                <p><%= article.content %></p>
+                <div>
+                    <span>
+                        <i class="iconfont">&#xe610;</i>
+                        <b>2014-12-23</b>
+                    </span>
+                    <span>
+                        <i class="iconfont">&#xe600;</i>
+                        <b>10</b>
+                    </span>
+                    <span class="comment" data-id="<%= article._id %>">
+                        <i class="iconfont">&#xe602;</i>
+                        <b>10</b>
+                    </span>
+                    <span class="praise" data-id="<%= article._id %>">
+                        <i class="iconfont">&#xe601;</i>
+                        <b><%= article.praiseCount %></b>
+                    </span>
                 </div>
-                <nav id="mainNav">
-                    <ul>
-                        <li><a href="javascritp:void(0)">杂谈</a></li>
-                        <li><a href="javascritp:void(0)">杂谈</a></li>
-                        <li><a href="javascritp:void(0)">杂谈</a></li>
-                    </ul>
-                </nav>
-                <i id="phoneNavShowBtn" class="iconfont">&#xe606;</i>
-                <nav id="phoneNav">
-                    <ul>
-                        <li><i id="phoneNavHideBtn" class="iconfont">&#xe607;</i></li>
-                        <li>
-                            <input type="text" name="search", id="search"/>
-                            <i id="searchBtn" class="iconfont">&#xf00a8;</i>
-                        </li>
-                        <li><a href="javascritp:void(0)">杂谈</a></li>
-                        <li><a href="javascritp:void(0)">杂谈</a></li>
-                        <li><a href="javascritp:void(0)">杂谈</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+            </article>
+            <div class="ds-thread" data-thread-key="<%= article._id %>" data-title="<%= article.title %>" data-url="http://127.0.0.1:3000/#detail/<%= article._id %>"></div>
+s        </div>
         
     </script>
+
+    <script type="text/template" id="T_Footer">
+        <div id="goTop">
+            <a href="javascript:scroll(0,0)"><i class="iconfont">&#xe615;</i></a>
+        </div>
+        <footer id="footer">
+            <p>Copyright © 2015 Powered by Excelsior</p>
+            <p>
+                <a href="https://github.com/Excelsior-WYH"><i class="iconfont">&#xe613;</i></a>
+                <a href="http://weibo.com/2809396541/profile?topnav=1&wvr=6"><i class="iconfont">&#xe60b;</i></a>
+                <a><i class="iconfont">&#xe60c;</i></a>
+                <a><i class="iconfont">&#xe604;</i></a>
+            </p>
+        </footer>
+    </script>
+    
 
     <script type="text/template" id="T_SignIn">
         <section>

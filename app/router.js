@@ -9,6 +9,7 @@
     router.post('/signin', UserController.signIn);
     router.post('/post', ArticleController.postArticle);
     router.post('/article/praise', ArticleController.articlePraise);
+    router.get('/article/detail', ArticleController.articleDetail);
 
     module.exports = router;
 

@@ -14,6 +14,7 @@
         render: function (viewData) {
             var template = this.template(viewData);
             $(this.el).html(template);
+            console.log(c_articles);
         },
         events: {
             'click #signInBtn': 'signInFunc' // 登录控制

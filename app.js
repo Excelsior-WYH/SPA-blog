@@ -31,7 +31,7 @@ app.set('views', path.join(__dirname, './app/views'));
 app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || 3000);
 
-app.use(favicon(__dirname + '/public/favicon.ico')); // icon图标
+app.use(favicon(__dirname + '/public/blog.ico')); // icon图标
 app.use(logger('dev')); // 日志记录
 app.use(bodyParser.json()); // 解析JSON
 app.use(bodyParser.urlencoded({extended: false})); // 解析头信息
@@ -62,6 +62,7 @@ app.use(function(request, response, next){
 app.use('/', router);
 app.use('/post', router);
 app.use('/article/praise', router);
+app.use('/article/detail', router);
 
 // 404处理
 app.use(function(req, res, next) {

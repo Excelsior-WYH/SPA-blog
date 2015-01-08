@@ -56,7 +56,7 @@
                     if(checkIsPraise(praiseDate)){
                         savePraise(praiseData);
                     }else { 
-                        return response.status(200).json({info: '你今天已经点过赞了哦(*^__^*)'});
+                        return response.status(200).json({status: 100, info: '你今天已经点过赞了哦(*^__^*)'});
                     }
                 }else {
                     savePraise(praiseData);
@@ -102,5 +102,15 @@
                 }
             });
         }
+    };
+
+    exports.articleDetail = function (request, response) {
+        var _id = request.query.id;
+        ArticleModel.findByID(_id, function (error, article) {
+            if(error != null) console.log(error);
+            if(article) {
+                return response.status(200).json(article);
+            }
+        });
     };
 
