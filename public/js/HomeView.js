@@ -3,7 +3,15 @@
         template: _.template($('#T_Header').html())
     });
     var V_Footer = Backbone.View.extend({
-        template: _.template($('#T_Footer').html())
+        template: _.template($('#T_Footer').html()),
+        initialize: function () {
+        },
+        events: {
+            'click #goTop i': 'goTopFunc'
+        },
+        goTopFunc: function (event) {
+            alert(1);
+        }
     });
     
     var v_header = new V_Header();
@@ -30,7 +38,7 @@
                         $.each($('#articles article'), function (index, article) {
                             index % 2 === 0 ? that.articleShowAnimate(article, 'left') : that.articleShowAnimate(article, 'right');
                         });
-                    }
+s                    }
                 },
                 error: function () {
 
@@ -43,7 +51,8 @@
             'touchstart #phoneNav': 'hidePhoneNavToo',
             'click #articles article h2': 'articleDetailFunc', // 跳转详情页
             'click #articles .comment': 'postCommentFunc', // 发表评论
-            'click #articles .praise': 'articlePraiseFunc' // 发表评论
+            'click #articles .praise': 'articlePraiseFunc', // 发表评论
+            'DOMMouseScroll window': 'showGoTopBtnFunc' // 显示回到顶部按钮
         },
         articleShowAnimate: function (element, position) {
             $(element).css(position, -5 + 'rem');
@@ -145,6 +154,12 @@
 
                 }
             });
+        },
+        showGoTopBtnFunc: function (event) {
+            $(window).on('scroll',function () {
+                // console.log($(window).scrollTop());
+                alert(1);
+            })
         }
     });
     
@@ -169,25 +184,25 @@
             if(c_articles.get(_id) === undefined) {
                 c_articles.fetch({
                     success: function (collection, response) {
-                        collection.models !== undefined ? that.pushViewData(_id) : alert('false');
+                        collection.models !== undefined ? that.pushViewData(_id, 10) : alert('false');
                     }
                 });
             }else {
                 that.pushViewData(_id);
             }
         },
-        pushViewData: function (_id) {
+        pushViewData: function (_id, number) {
             var template = this.template({article: c_articles.get(_id).attributes});
             $(this.el).append(template);
             var $article = $('#article article');
             var height = $article.css('height');
-            $article.css('min-height', 1);
+            $article.css('height', 0);
             $article.animate({
                 'opacity': 1,
-                'heihgt': height + 'rem'
+                'height': height + number
             }, {
                 easing: 'easeInOutQuad',
-                duration: 3500
+                duration: 2700
             });
             $(this.el).append(v_footer.template()); // 尾部
         },

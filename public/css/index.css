@@ -65,6 +65,9 @@
 .icon-daohang:before {
   content: "\e606"; }
 
+.icon-sousuo:before {
+  content: "\e616"; }
+
 .icon-icon:before {
   content: "\e607"; }
 
@@ -208,131 +211,167 @@ body {
         outline: hidden;
         background: #00755E; }
 
-#header .wrapper {
-  width: 100%;
-  min-height: 20rem;
-  background-image: url("../images/background.jpg");
-  background-size: cover; }
-  #header .wrapper .declare {
-    text-align: center;
-    padding-top: 3rem; }
-    #header .wrapper .declare h1 {
-      padding: 0;
-      margin: 0;
-      font-family: 'Author';
-      font-weight: 500;
-      color: #fff;
-      vertical-align: top;
-      margin: 0.5rem 0 0 1rem;
-      cursor: pointer; }
+#header {
+  margin-bottom: 3rem; }
+  #header .wrapper {
+    width: 100%;
+    min-height: 20rem;
+    background-color: #006284;
+    background-image: url(../images/texture.png);
+    background-size: cover; }
+    #header .wrapper .declare {
+      text-align: center;
+      padding-top: 1.2rem; }
       @media screen and (min-width: 320px) and (max-width: 540px) {
-        #header .wrapper .declare h1 {
-          display: inline-block; } }
-      #header .wrapper .declare h1:hover {
-        transition: 1s ease-out;
-        color: #e84c3d; }
-  #header .wrapper #mainNav {
-    width: 20rem;
-    height: 5rem;
-    margin: 0 auto; }
-    @media screen and (min-width: 320px) and (max-width: 540px) {
-      #header .wrapper #mainNav {
-        display: none; } }
-    #header .wrapper #mainNav ul {
-      width: 20rem;
-      margin: 0 auto;
-      padding: 0;
-      margin: 0; }
-      #header .wrapper #mainNav ul li {
-        float: left;
-        background-color: rgba(25, 25, 25, 0.4);
-        margin: 1rem 1rem; }
-        #header .wrapper #mainNav ul li a {
-          padding: 0.5rem;
-          color: #D9D9D9;
-          font-size: 1.5rem; }
-          @media screen and (min-width: 1024px) and (max-width: 1920px) {
-            #header .wrapper #mainNav ul li a {
-              font-size: 1rem; } }
-          #header .wrapper #mainNav ul li a:hover {
-            transition: 1s ease-out;
-            background-color: rgba(25, 25, 25, 0.7); }
-  #header .wrapper #phoneNavShowBtn {
-    position: absolute;
-    left: 1rem;
-    top: 1rem;
-    display: none;
-    font-size: 2.2rem;
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer; }
-    @media screen and (min-width: 320px) and (max-width: 540px) {
-      #header .wrapper #phoneNavShowBtn {
-        display: block; } }
-    #header .wrapper #phoneNavShowBtn:hover {
-      transition: 0.2s;
-      font-size: 2.3rem; }
-  #header .wrapper #phoneNav {
-    width: 20rem;
-    position: absolute;
-    top: 0;
-    left: -20rem;
-    opacity: 0;
-    display: block;
-    background: #333;
-    box-shadow: inset 0 0 5px 5px #222;
-    z-index: 9999; }
-    #header .wrapper #phoneNav ul {
-      width: 100%; }
-      #header .wrapper #phoneNav ul li {
-        float: left;
-        width: 100%;
-        border-top: 1px solid #4d4d4d;
-        border-bottom: 1px solid #1a1a1a;
-        height: 3rem;
+        #header .wrapper .declare {
+          padding-top: 3.5rem; } }
+      #header .wrapper .declare img {
+        border-radius: 60%;
+        width: 130px;
+        height: 130px;
+        cursor: pointer;
+        -webkit-box-shadow: 0px 0px 20px #000000; }
+@-webkit-keyframes fadeOutInOutSwirl {
+  0% {
+    opacity: 1; }
+  25% {
+    transform: rotateZ(0deg); }
+  50% {
+    transform: rotateZ(90deg); }
+  75% {
+    transform: rotateZ(180deg); }
+  100% {
+    transform: rotateZ(360deg); } }
+        #header .wrapper .declare img:hover {
+          -webkit-animation-name: fadeOutInOutSwirl;
+          -webkit-animation-duration: .3s; }
+      #header .wrapper .declare h1 {
+        padding: 0;
+        margin: 0;
+        font-family: 'Author';
+        font-weight: 500;
+        color: #BDC0BA;
+        vertical-align: top;
+        margin: 1rem 0 0 1rem;
         cursor: pointer; }
-        #header .wrapper #phoneNav ul li:hover {
+        @media screen and (min-width: 320px) and (max-width: 540px) {
+          #header .wrapper .declare h1 {
+            display: inline-block; } }
+        #header .wrapper .declare h1:hover {
           transition: 1s ease-out;
-          box-shadow: inset 0 0 15px 3px #222; }
-        #header .wrapper #phoneNav ul li input {
+          color: #e84c3d; }
+    #header .wrapper #mainNav {
+      width: 100%;
+      height: 3rem; }
+      @media screen and (min-width: 320px) and (max-width: 540px) {
+        #header .wrapper #mainNav {
+          display: none; } }
+      #header .wrapper #mainNav ul {
+        width: 20rem;
+        margin: 0 auto;
+        padding: 0;
+        margin: 0; }
+        #header .wrapper #mainNav ul li {
           float: left;
-          height: 2rem;
-          border: 0;
-          border-radius: 0.8rem;
-          padding-left: 0.5rem;
-          margin: 0.2rem 0 0 2rem;
-          color: #000000; }
-          #header .wrapper #phoneNav ul li input:focus {
-            outline: none; }
-        #header .wrapper #phoneNav ul li #phoneNavHideBtn {
-          cursor: pointer;
-          font-size: 2rem; }
-        #header .wrapper #phoneNav ul li #searchBtn {
-          float: left;
-          text-indent: 0.2rem;
-          font-size: 2rem;
-          padding: 0.2rem 0 0 0.6rem; }
-        #header .wrapper #phoneNav ul li a {
-          width: 100%;
-          height: 100%;
-          float: left;
+          border-right: 1px #1E88A8 solid;
+          margin: 1rem 0.5rem; }
+          #header .wrapper #mainNav ul li a {
+            padding: 0.5rem;
+            color: #D9D9D9;
+            font-size: 1.5rem;
+            font-family: "Author";
+            letter-spacing: 0.2rem; }
+            @media screen and (min-width: 1024px) and (max-width: 1920px) {
+              #header .wrapper #mainNav ul li a {
+                font-size: 1rem; } }
+            #header .wrapper #mainNav ul li a:hover {
+              transition: .5s ease-out;
+              color: #E87A90; }
+      #header .wrapper #mainNav i {
+        float: right;
+        margin: 1.3rem 5rem 0 0;
+        font-size: 1.2rem;
+        color: #BDC0BA;
+        cursor: pointer; }
+    #header .wrapper #phoneNavShowBtn {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      display: none;
+      font-size: 2.8rem;
+      width: 2rem;
+      height: 2rem;
+      cursor: pointer;
+      color: #BDC0BA; }
+      @media screen and (min-width: 320px) and (max-width: 540px) {
+        #header .wrapper #phoneNavShowBtn {
           display: block;
-          color: #dddddd;
-          font-size: 1.2rem;
-          line-height: 1.2rem;
-          font-family: "Author";
-          letter-spacing: 0.2rem; }
+          font-size: 2.8rem; } }
+      #header .wrapper #phoneNavShowBtn:hover {
+        transition: 0.2s;
+        font-size: 2.3rem; }
+    #header .wrapper #phoneNav {
+      width: 20rem;
+      position: absolute;
+      top: 0;
+      left: -20rem;
+      opacity: 0;
+      display: block;
+      background: #333;
+      box-shadow: inset 0 0 5px 5px #222;
+      z-index: 9999; }
+      #header .wrapper #phoneNav ul {
+        width: 100%; }
+        #header .wrapper #phoneNav ul li {
+          float: left;
+          width: 100%;
+          border-top: 1px solid #4d4d4d;
+          border-bottom: 1px solid #1a1a1a;
+          height: 3rem;
+          cursor: pointer; }
+          #header .wrapper #phoneNav ul li:hover {
+            transition: 1s ease-out;
+            box-shadow: inset 0 0 15px 3px #222; }
+          #header .wrapper #phoneNav ul li input {
+            float: left;
+            height: 2rem;
+            border: 0;
+            border-radius: 0.8rem;
+            padding-left: 0.5rem;
+            margin: 0.2rem 0 0 2rem;
+            color: #000000; }
+            #header .wrapper #phoneNav ul li input:focus {
+              outline: none; }
+          #header .wrapper #phoneNav ul li #phoneNavHideBtn {
+            cursor: pointer;
+            font-size: 2rem; }
+          #header .wrapper #phoneNav ul li #searchBtn {
+            float: left;
+            text-indent: 0.2rem;
+            font-size: 2rem;
+            padding: 0.2rem 0 0 0.6rem; }
+          #header .wrapper #phoneNav ul li a {
+            width: 100%;
+            height: 100%;
+            float: left;
+            display: block;
+            color: #dddddd;
+            font-size: 1.2rem;
+            line-height: 1.2rem;
+            font-family: "Author";
+            letter-spacing: 0.2rem; }
 
 #articles, #article {
   margin: 0 auto;
   text-align: center; }
   #articles article, #article article {
     position: relative;
-    margin: 3rem auto;
+    margin: 0 auto 3rem;
     padding-top: 0.4rem;
+    min-height: 1rem;
     max-heihgt: 30rem;
-    overflow: hidden;
     width: 40rem;
+    overflow: hidden;
     opacity: 0;
     background: #FCFAF2;
     border: 1px solid #aaa;
@@ -400,22 +439,26 @@ body {
   20%, 40%, 60%, 80% {
     -webkit-transform: translateY(2px);
     -webkit-color: #333; } }
-  #goTop a i {
-    float: right;
-    position: relative;
-    right: 2rem;
-    bottom: 1rem;
+  #goTop i {
+    position: fixed;
+    right: 5rem;
+    bottom: 1.2rem;
+    z-index: 4;
     font-size: 3rem;
     cursor: pointer; }
-    #goTop a i:hover {
+    @media screen and (min-width: 320px) and (max-width: 540px) {
+      #goTop i {
+        right: 3px;
+        bottom: 5px; } }
+    #goTop i:hover {
       -webkit-animation-name: rocketShake;
-      -webkit-animation-duration: 1s; }
+      -webkit-animation-duration: .5s; }
 
 #footer {
   min-height: 5rem;
   width: 100%;
   background: #262a30;
-  padding: 0.5rem 0; }
+  padding: .5rem 0; }
 @-webkit-keyframes jellyShake {
   0%, 100% {
     -webkit-transform: translateX(0); }
