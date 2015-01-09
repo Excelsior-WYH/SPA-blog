@@ -46,7 +46,4 @@
         //         changeIndex(index);
         //     }
         // }
-        $(window).on('scroll',function () {
-            // 
-        })
     });

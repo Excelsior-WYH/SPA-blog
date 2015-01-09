@@ -1,6 +1,15 @@
 
     var V_Header = Backbone.View.extend({
-        template: _.template($('#T_Header').html())
+        template: _.template($('#T_Header').html()),
+        events: {
+            'touchstart #phoneNavShowBtn': 'showPhoneNavFunc' // 菜单显示
+        },
+        render: function (event) {
+
+        },  
+        showPhoneNavFunc: function (event) {
+            alert(1);
+        }
     });
     var V_Footer = Backbone.View.extend({
         template: _.template($('#T_Footer').html()),
@@ -13,7 +22,7 @@
             alert(1);
         }
     });
-    
+
     var v_header = new V_Header();
     var v_footer = new V_Footer();
 
@@ -26,8 +35,10 @@
         initialize: function () {
             this.render();
         },
+        flag: true,
         render: function () {
             var that = this;
+            var v_header = new V_Header();
             $(that.el).html(v_header.template()); // 头部
             c_articles.fetch({
                 success: function (collection, response) {
@@ -38,7 +49,7 @@
                         $.each($('#articles article'), function (index, article) {
                             index % 2 === 0 ? that.articleShowAnimate(article, 'left') : that.articleShowAnimate(article, 'right');
                         });
-s                    }
+                    }
                 },
                 error: function () {
 
@@ -52,7 +63,9 @@ s                    }
             'click #articles article h2': 'articleDetailFunc', // 跳转详情页
             'click #articles .comment': 'postCommentFunc', // 发表评论
             'click #articles .praise': 'articlePraiseFunc', // 发表评论
-            'DOMMouseScroll window': 'showGoTopBtnFunc' // 显示回到顶部按钮
+            'DOMMouseScroll window': 'showGoTopBtnFunc', // 显示回到顶部按钮
+            'touchstart #goTop i': 'goTopFunc',
+            'click #goTop i': 'goTopFunc'
         },
         articleShowAnimate: function (element, position) {
             $(element).css(position, -5 + 'rem');
@@ -64,7 +77,7 @@ s                    }
                     }, {
                         easing: 'easeInOutQuad',
                         duration: 1000,
-                        complete: {
+                        complete: function () {
                             // $(element).css({'position': 'auto'});
                         }
                     });
@@ -75,14 +88,15 @@ s                    }
                     }, {
                         easing: 'easeInOutQuad',
                         duration: 1000,
-                        complete: {
-                            // $(element).css({'position': 'auto'});
+                        complete: function () {
+
                         }
                     });
             }
         },
         showPhoneNavFunc: function (event) {
             event.preventDefault();
+            var that = this;
             var $phoneNav = $('#phoneNav');
             $phoneNav.css('height', $(window).height());
             $phoneNav.animate({
@@ -92,11 +106,7 @@ s                    }
                 easing: 'easeInOutQuad',
                 duration: 350,
                 complete: function () {
-                    /**something**/
-                    document.addEventListener('touchmove', function(event) {
-                        if(event.target.type == 'range') return;
-                        event.preventDefault();
-                    })
+                    $('body').css('overflow-y', 'hidden');
                 }
             });
         },
@@ -108,11 +118,7 @@ s                    }
                 easing: 'easeInOutQuad',
                 duration: 350,
                 complete: function () {
-                    /**something**/
-                    document.addEventListener('touchmove', function(event) {
-                        !event.preventDefault();
-                        return true;
-                    });
+                   $('body').css('overflow-y', 'auto');
                 }
             });
         },
@@ -129,14 +135,13 @@ s                    }
         },
         articleDetailFunc: function (event) {
             event.preventDefault();
-            router.navigate('detail/' + $(event.currentTarget).data('id'), {trigger: true});
+            router.navigate('detail/' + $(event.currentTarget).data('id'), true);
         },
         postCommentFunc: function (event) {
             event.preventDefault();
             var _this = this;
             var _id = $(event.currentTarget).data('id');
-            console.log(c_articles.get(_id));
-            router.navigate('detail/' + 2, {trigger: true});
+            router.navigate('detail/' + 2, true);
         },
         articlePraiseFunc: function (event) {
             var _this = this;
@@ -155,11 +160,10 @@ s                    }
                 }
             });
         },
-        showGoTopBtnFunc: function (event) {
-            $(window).on('scroll',function () {
-                // console.log($(window).scrollTop());
-                alert(1);
-            })
+        goTopFunc: function (event) {
+            $('html, body').animate({
+                'scrollTop': 0
+            });
         }
     });
     
@@ -178,6 +182,10 @@ s                    }
             this.render(_id);
         },
         template: _.template($('#T_ArticleDetail').html()),
+        events: {
+            'touchstart #phoneNavShowBtn': 'showPhoneNavFunc', // 菜单显示
+            'touchstart #phoneNavHideBtn': 'hidePhoneNavFunc', // 菜单隐藏
+        },
         render: function (_id) {
             var that = this;
             $(this.el).html(v_header.template()); // 头部
@@ -191,19 +199,49 @@ s                    }
                 that.pushViewData(_id);
             }
         },
+        showPhoneNavFunc: function (event) {
+            event.preventDefault();
+            var that = this;
+            var $phoneNav = $('#phoneNav');
+            $phoneNav.css('height', $(window).height());
+            $phoneNav.animate({
+                'opacity': 1,
+                'left': 0
+            }, {
+                easing: 'easeInOutQuad',
+                duration: 350,
+                complete: function () {
+                    $('body').css('overflow-y', 'hidden');
+                }
+            });
+        },
+        hidePhoneNavFunc: function (event) {
+            $('#phoneNav').animate({
+                'opacity': 0,
+                'left': -20 + 'rem'
+            }, {
+                easing: 'easeInOutQuad',
+                duration: 350,
+                complete: function () {
+                   $('body').css('overflow-y', 'auto');
+                }
+            });
+        },
         pushViewData: function (_id, number) {
             var template = this.template({article: c_articles.get(_id).attributes});
             $(this.el).append(template);
-            var $article = $('#article article');
-            var height = $article.css('height');
-            $article.css('height', 0);
-            $article.animate({
-                'opacity': 1,
-                'height': height + number
-            }, {
-                easing: 'easeInOutQuad',
-                duration: 2700
-            });
+            // alert($('#article article').width());
+            // alert();
+            // var $article = $('#article article');
+            // var height = $article.css('height');
+            // $article.css('height', 0);
+            // $article.animate({
+            //     'opacity': 1,
+            //     'height': height + number
+            // }, {
+            //     easing: 'easeInOutQuad',
+            //     duration: 2700
+            // });
             $(this.el).append(v_footer.template()); // 尾部
         },
         events: {

@@ -17,7 +17,7 @@
                 </nav>
                 <div class="declare">
                     <img src="/images/d.jpg" alt="Excelsior" width="130" height="130"/>
-                    <h1>一百个梦里九十九个有你</h1>
+                    <h1>我是要成为海贼王的男人!</h1>
                 </div>
                 <i id="phoneNavShowBtn" class="iconfont">&#xe606;</i>
                 <nav id="phoneNav">
@@ -46,7 +46,11 @@
                     <div>
                         <span>
                             <i class="iconfont">&#xe610;</i>
-                            <b>2014-12-23</b>
+                            <b>
+                                <%= 
+                                    GetLunarDay(new Date(article.postDate).getFullYear(), new Date(article.postDate).getMonth() + 1, new Date(article.postDate).getDay())
+                                %>
+                             </b>
                         </span>
                         <span>
                             <i class="iconfont">&#xe600;</i>
@@ -91,7 +95,14 @@
                     </span>
                 </div>
             </article>
+
+            <div class="duoshuoCommentForm">
+                <div class="ds-thread" data-thread-key="<%= article._id %>" data-title="<%= article.title %>" data-url="http://127.0.0.1:3000/#detail/<%= article._id %>">
+                </div>
             
+                <div class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70">
+                </div>
+            </div>
        </div>
         
     </script>

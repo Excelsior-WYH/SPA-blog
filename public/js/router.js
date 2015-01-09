@@ -15,7 +15,11 @@
 
 
     router.on('route:index', function () {
-        new V_Index();
+        (function () {
+            new V_Index();
+            showWithAnimate($('#articles'), 800);
+            changeTitle('Excelsior Blog | Do Something');
+        })();
     });
     router.on('route:articleDetail', function (_id) {
         new V_Detail(_id);

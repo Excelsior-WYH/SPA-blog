@@ -1,9 +1,4 @@
 @font-face {
-  font-family: 'Author';
-  src: url("../font/author.ttf");
-  font-weight: bold;
-  font-style: normal; }
-@font-face {
   font-family: 'ExoThin';
   src: url("../font/ExoThin.woff");
   font-weight: normal;
@@ -116,7 +111,8 @@ a {
 
 body {
   background-color: #FCFAF2;
-  background-image: url(../images/texture.png); }
+  background-image: url(../images/texture.png);
+  overflow-x: hidden; }
 
 @media only screen and (min-width: 320px) and (max-width: 360px) {
   html {
@@ -124,7 +120,7 @@ body {
 @media only screen and (min-width: 360px) and (max-width: 384px) {
   html {
     font-size: 75% !important; } }
-@media only screen and (min-width: 384px) and (max-width: 540px) {
+@media only screen and (min-width: 386px) and (max-width: 540px) {
   html {
     font-size: 90% !important; } }
 @media only screen and (min-width: 540px) and (max-width: 640px) {
@@ -156,7 +152,7 @@ body {
   #signIn h1 {
     padding: 0;
     margin: 0;
-    font-family: "Author";
+    font-family: "ExoThin";
     font-size: 1.3rem;
     color: #4298ba; }
   @media screen and (min-width: 320px) and (max-width: 540px) {
@@ -248,7 +244,7 @@ body {
       #header .wrapper .declare h1 {
         padding: 0;
         margin: 0;
-        font-family: 'Author';
+        font-family: "minijianxiyuan155247";
         font-weight: 500;
         color: #BDC0BA;
         vertical-align: top;
@@ -279,7 +275,7 @@ body {
             padding: 0.5rem;
             color: #D9D9D9;
             font-size: 1.5rem;
-            font-family: "Author";
+            font-family: "ExoThin";
             letter-spacing: 0.2rem; }
             @media screen and (min-width: 1024px) and (max-width: 1920px) {
               #header .wrapper #mainNav ul li a {
@@ -308,8 +304,7 @@ body {
           display: block;
           font-size: 2.8rem; } }
       #header .wrapper #phoneNavShowBtn:hover {
-        transition: 0.2s;
-        font-size: 2.3rem; }
+        transition: .2s; }
     #header .wrapper #phoneNav {
       width: 20rem;
       position: absolute;
@@ -358,7 +353,7 @@ body {
             color: #dddddd;
             font-size: 1.2rem;
             line-height: 1.2rem;
-            font-family: "Author";
+            font-family: "ExoThin";
             letter-spacing: 0.2rem; }
 
 #articles, #article {
@@ -372,7 +367,6 @@ body {
     max-heihgt: 30rem;
     width: 40rem;
     overflow: hidden;
-    opacity: 0;
     background: #FCFAF2;
     border: 1px solid #aaa;
     border-radius: 0.6rem;
@@ -426,6 +420,44 @@ body {
           font-family: "ExoRegular"; }
       #articles article div span:first-child, #article article div span:first-child {
         margin-left: 0; }
+  #articles .duoshuoCommentForm, #article .duoshuoCommentForm {
+    max-width: 40rem;
+    margin: 0 auto; }
+    @media screen and (min-width: 320px) and (max-width: 540px) {
+      #articles .duoshuoCommentForm, #article .duoshuoCommentForm {
+        max-width: 25rem; } }
+    #articles .duoshuoCommentForm #ds-thread #ds-reset .ds-post-button, #article .duoshuoCommentForm #ds-thread #ds-reset .ds-post-button {
+      background-color: #5DAC81;
+      color: #4298ba;
+      font-family: "ExoThin"; }
+    #articles .duoshuoCommentForm #ds-thread #ds-reset .ds-sort, #article .duoshuoCommentForm #ds-thread #ds-reset .ds-sort {
+      display: none; }
+    #articles .duoshuoCommentForm #ds-thread #ds-reset .ds-avatar img, #article .duoshuoCommentForm #ds-thread #ds-reset .ds-avatar img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: inset 0 -1px 0 #333;
+      -webkit-box-shadow: inset 0 -1px 0 #333;
+      -webkit-transition: 0.4s;
+      -webkit-transition: -webkit-transform 0.4s ease-out;
+      transition: transform 0.4s ease-out;
+      -moz-transition: -moz-transform 0.4s ease-out; }
+    #articles .duoshuoCommentForm #ds-thread #ds-reset .ds-avatar img:hover, #article .duoshuoCommentForm #ds-thread #ds-reset .ds-avatar img:hover {
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), inset 0 0 20px white;
+      -webkit-box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), inset 0 0 20px white;
+      transform: rotateZ(360deg);
+      -webkit-transform: rotateZ(360deg);
+      -moz-transform: rotateZ(360deg); }
+    #articles .duoshuoCommentForm #ds-thread #ds-reset .ds-meta, #article .duoshuoCommentForm #ds-thread #ds-reset .ds-meta {
+      display: none; }
+    #articles .duoshuoCommentForm #ds-thread #ds-reset .ds-replybox .ds-avatar img, #article .duoshuoCommentForm #ds-thread #ds-reset .ds-replybox .ds-avatar img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%; }
+    #articles .duoshuoCommentForm .ds-recent-comments, #article .duoshuoCommentForm .ds-recent-comments {
+      display: none; }
+    #articles .duoshuoCommentForm .ds-powered-by, #article .duoshuoCommentForm .ds-powered-by {
+      display: none; }
 
 #goTop {
   height: 3rem;
@@ -457,8 +489,9 @@ body {
 #footer {
   min-height: 5rem;
   width: 100%;
-  background: #262a30;
-  padding: .5rem 0; }
+  background-color: #1C1C1C;
+  padding: .5rem 0;
+  background-image: url(../images/texture.png); }
 @-webkit-keyframes jellyShake {
   0%, 100% {
     -webkit-transform: translateX(0); }
@@ -476,7 +509,6 @@ body {
   #footer p:first-child {
     color: #999; }
   #footer p {
-    width: 30rem;
     margin: 1rem auto 0;
     font-family: "ExoThin";
     text-align: center;
