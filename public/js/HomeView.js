@@ -7,9 +7,7 @@
         render: function (event) {
 
         },  
-        showPhoneNavFunc: function (event) {
-            alert(1);
-        }
+        
     });
     var V_Footer = Backbone.View.extend({
         template: _.template($('#T_Footer').html()),
