@@ -18,9 +18,7 @@
         events: {
             'click #goTop i': 'goTopFunc'
         },
-        goTopFunc: function (event) {
-            alert(1);
-        }
+            
     });
 
     var v_header = new V_Header();
