@@ -6,7 +6,7 @@
         },
         render: function (event) {
 
-        },  
+        }
         
     });
     var V_Footer = Backbone.View.extend({
