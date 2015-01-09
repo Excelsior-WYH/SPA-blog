@@ -52,6 +52,8 @@
 
 .icon-rili:before { content: "\e610"; }
 
+.icon-goushengxiao:before { content: "\e617"; }
+
 .icon-liulan:before { content: "\e603"; }
 
 .icon-ux14006382562102623:before { content: "\e604"; }
@@ -106,22 +108,22 @@ body {
 }
 @media only screen and (min-width: 320px) and (max-width: 360px) {
     html {
-        font-size: 70%!important;
+        font-size: 67%!important;
     }
 }
 @media only screen and (min-width: 360px) and (max-width: 384px) {
     html {
-        font-size: 75%!important;
+        font-size: 80%!important;
     }
 }
 @media only screen and (min-width: 386px) and (max-width: 540px) {
     html {
-        font-size: 90%!important;
+        font-size: 86%!important;
     }
 }
 @media only screen and (min-width: 540px) and (max-width: 640px) {
     html {
-        font-size: 95%!important;
+        font-size: 85%!important;
     }
 }
 @media only screen and (min-width: 640px) and (max-width: 720px) {
@@ -233,9 +235,9 @@ body {
         background-size: cover;
         .declare {
             text-align: center;
-            padding-top: 1.2rem;
+            padding-top: 4.2rem;
             @media screen and (min-width: 320px) and (max-width: 540px){
-                padding-top: 3.5rem;
+                padding-top: 4.5rem;
             }
             img {
                 @-webkit-keyframes fadeOutInOutSwirl {
@@ -265,26 +267,36 @@ body {
                     -webkit-animation-duration: .3s;
                 }
             }
-            h1 {
+            p {
                 @include pmClear;
-                font-family: "minijianxiyuan155247";
+                font-family: "minijianxiyuan155771";
                 font-weight: 500;
+                font-size: 2.4rem;
+                letter-spacing: .3rem;
                 color: #BDC0BA;
                 vertical-align: top;
-                margin: 1rem 0 0 1rem;
+                margin-top: 1rem;
                 cursor: pointer;
                 @media screen and (min-width: 320px) and (max-width: 540px){
-                    display: inline-block;
+                    font-size: 1.6rem;
                 }
                 &:hover {
                     transition: 1s ease-out;
                     color: #e84c3d;
                 }
+                i {
+                    color: #00AA90;
+                    font-size: 2.5rem;
+                    @media screen and (min-width: 320px) and (max-width: 540px){
+                        font-size: 1.6rem;
+                    }
+                }
             }
         }
         #mainNav {
-            width: 100%;
+            width: 50%;
             height: 3rem;
+            float: left;
             @media screen and (min-width: 320px) and (max-width: 540px){
                 display: none;
             }
@@ -318,6 +330,30 @@ body {
                 font-size: 1.2rem;
                 color: #BDC0BA;
                 cursor: pointer;
+            }
+        }
+        form {
+            float: right;
+            height: 3rem;
+            line-height: 3.5rem;
+            margin-right: 1.2rem;
+            @media screen and (min-width: 320px) and (max-width: 540px) {
+                line-height: 4.5rem;
+            }
+            input {
+                width: 7rem;
+                border-radius: 10px;
+                padding: 0.5rem;
+                border: 0;
+                &:focus {
+                    outline: none;
+                }
+            }
+            i {
+                color: #BDC0BA;
+                display: inline-block;
+                cursor: pointer;
+                font-size: 1.85rem;
             }
         }
         #phoneNavShowBtn {
@@ -468,6 +504,10 @@ body {
                 b {
                     font-weight: lighter;
                     font-family: "ExoRegular";
+                }
+                img {
+                    width: auto;
+                    height: auto;
                 }
             }
             span:first-child {

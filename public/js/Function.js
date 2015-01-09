@@ -35,3 +35,42 @@
             }
         }
     }
+
+
+    function showSearchInput(){
+        var $width = parseInt($('#search').css('width'));
+        var flag = false;
+        $('#search').css({'width': 0, 'opacity': 0});
+        $('form').find('i').on('click', function (event) {
+            if (!flag){
+                $('#search').animate({
+                    'opacity': 1,
+                    'width': 7 + 'rem'
+                }, {
+                    easing: 'easeInOutQuad',
+                    duration: 300,
+                    complete: function () {
+                        $('#search').focus();
+                        flag = true;
+                    }
+                })
+            }
+        });
+        if(flag) {
+            
+        }
+        function hideSearchInput(){
+            $('#search').blur(function(event){
+                $('#search').animate({
+                    'opacity': 0,
+                    'width': 0
+                }, {
+                    easing: 'easeInOutQuad',
+                    duration: 300,
+                    complete: function () {
+
+                    }
+                })
+            })
+        }
+    }

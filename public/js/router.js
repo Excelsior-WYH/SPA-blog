@@ -19,6 +19,7 @@
             new V_Index();
             showWithAnimate($('#articles'), 800);
             changeTitle('Excelsior Blog | Do Something');
+            showSearchInput();
         })();
     });
     router.on('route:articleDetail', function (_id) {
