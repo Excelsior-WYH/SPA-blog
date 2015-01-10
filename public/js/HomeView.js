@@ -53,15 +53,9 @@
             });
         },
         events: {
-            'touchstart #phoneNavShowBtn': 'showPhoneNavFunc', // 菜单显示
-            'touchstart #phoneNavHideBtn': 'hidePhoneNavFunc', // 菜单隐藏
-            'touchstart #phoneNav': 'hidePhoneNavToo',
             'click #articles article h2': 'articleDetailFunc', // 跳转详情页
             'click #articles .comment': 'postCommentFunc', // 发表评论
-            'click #articles .praise': 'articlePraiseFunc', // 发表评论
-            'DOMMouseScroll window': 'showGoTopBtnFunc', // 显示回到顶部按钮
-            'touchstart #goTop i': 'goTopFunc',
-            'click #goTop i': 'goTopFunc'
+            'click #articles .praise': 'articlePraiseFunc' // 发表评论
         },
         articleShowAnimate: function (element, position) {
             $(element).css(position, -5 + 'rem');
@@ -88,45 +82,6 @@
 
                         }
                     });
-            }
-        },
-        showPhoneNavFunc: function (event) {
-            event.preventDefault();
-            var that = this;
-            var $phoneNav = $('#phoneNav');
-            $phoneNav.css('height', $(window).height());
-            $phoneNav.animate({
-                'opacity': 1,
-                'left': 0
-            }, {
-                easing: 'easeInOutQuad',
-                duration: 350,
-                complete: function () {
-                    $('body').css('overflow-y', 'hidden');
-                }
-            });
-        },
-        hidePhoneNavFunc: function (event) {
-            $('#phoneNav').animate({
-                'opacity': 0,
-                'left': -20 + 'rem'
-            }, {
-                easing: 'easeInOutQuad',
-                duration: 350,
-                complete: function () {
-                   $('body').css('overflow-y', 'auto');
-                }
-            });
-        },
-        hidePhoneNavToo: function (event) {
-            if (parseInt($('#phoneNav').css('opacity')) == 1) {
-                var _this = this;
-                if ($(event.target) != $('#phoneNav')){
-                    console.log($(event.target));
-                    console.log($('#phoneNav'))
-                }else {
-                    console.log(event.target)
-                }
             }
         },
         articleDetailFunc: function (event) {
@@ -156,11 +111,6 @@
                 }
             });
         },
-        goTopFunc: function (event) {
-            $('html, body').animate({
-                'scrollTop': 0
-            });
-        }
     });
     
 
