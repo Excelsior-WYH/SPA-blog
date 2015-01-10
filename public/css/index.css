@@ -494,33 +494,6 @@ body {
     #articles .duoshuoCommentForm .ds-powered-by, #article .duoshuoCommentForm .ds-powered-by {
       display: none; }
 
-#goTop {
-  height: 3rem;
-  width: 100%; }
-@-webkit-keyframes rocketShake {
-  0%, 100% {
-    -webkit-transform: translateY(0); }
-  10%, 30%, 50%, 70%, 90% {
-    -webkit-transform: translateY(-2px);
-    -webkit-color: #333; }
-  20%, 40%, 60%, 80% {
-    -webkit-transform: translateY(2px);
-    -webkit-color: #333; } }
-  #goTop i {
-    position: fixed;
-    right: 5rem;
-    bottom: 1.2rem;
-    z-index: 4;
-    font-size: 3rem;
-    cursor: pointer; }
-    @media screen and (min-width: 320px) and (max-width: 540px) {
-      #goTop i {
-        right: 3px;
-        bottom: 5px; } }
-    #goTop i:hover {
-      -webkit-animation-name: rocketShake;
-      -webkit-animation-duration: .5s; }
-
 #footer {
   min-height: 5rem;
   width: 100%;
@@ -567,6 +540,33 @@ body {
       color: #5DAC81; }
     #footer p a:nth-child(4) i {
       color: #FFC028; }
+
+#returnViewTop {
+  height: 3rem;
+  width: 100%; }
+@-webkit-keyframes rocketShake {
+  0%, 100% {
+    -webkit-transform: translateY(0); }
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translateY(-2px);
+    -webkit-color: #333; }
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translateY(2px);
+    -webkit-color: #333; } }
+  #returnViewTop i {
+    position: fixed;
+    right: 5rem;
+    bottom: 1.2rem;
+    z-index: 4;
+    font-size: 3rem;
+    cursor: pointer; }
+    @media screen and (min-width: 320px) and (max-width: 540px) {
+      #returnViewTop i {
+        right: 3px;
+        bottom: 5px; } }
+    #returnViewTop i:hover {
+      -webkit-animation-name: rocketShake;
+      -webkit-animation-duration: .5s; }
 
 #postArticleNav {
   margin: 2rem auto;

@@ -79,9 +79,11 @@
     }
 
     function returnViewTopFunc (event) {
-        $('#returnViewTopIcon')
-        $('html, body').animate({
-            'scrollTop': 0
+        $('#returnViewTop').on('click', function (event) {
+            event.preventDefault();
+            $('html, body').animate({
+                'scrollTop': 0
+            });
         });
     }
 

@@ -567,41 +567,6 @@ body {
         }
     }
 }
-#goTop {
-    @-webkit-keyframes rocketShake {  
-        0%, 100% {
-            -webkit-transform: translateY(0);
-        }  
-        10%, 30%, 50%, 70%, 90% {
-            -webkit-transform: 
-            translateY(-2px);
-            -webkit-color: #333;
-        }  
-        20%, 40%, 60%, 80% {
-            -webkit-transform: 
-            translateY(2px);
-            -webkit-color: #333;
-        }  
-    }
-    height: 3rem;
-    width: 100%;
-    i {
-        position:fixed;
-        right: 5rem;
-        bottom: 1.2rem;
-        @media screen and (min-width: 320px) and (max-width: 540px) {
-            right: 3px;
-            bottom: 5px;
-        }
-        z-index: 4;
-        font-size: 3rem;
-        cursor: pointer;
-        &:hover {
-            -webkit-animation-name: rocketShake;  
-            -webkit-animation-duration: .5s;
-        }
-    }
-}
 
 #footer {
     @-webkit-keyframes jellyShake {  
@@ -673,7 +638,42 @@ body {
             }
         }
     }
+}
 
+#returnViewTop {
+    @-webkit-keyframes rocketShake {  
+        0%, 100% {
+            -webkit-transform: translateY(0);
+        }  
+        10%, 30%, 50%, 70%, 90% {
+            -webkit-transform: 
+            translateY(-2px);
+            -webkit-color: #333;
+        }  
+        20%, 40%, 60%, 80% {
+            -webkit-transform: 
+            translateY(2px);
+            -webkit-color: #333;
+        }  
+    }
+    height: 3rem;
+    width: 100%;
+    i {
+        position:fixed;
+        right: 5rem;
+        bottom: 1.2rem;
+        @media screen and (min-width: 320px) and (max-width: 540px) {
+            right: 3px;
+            bottom: 5px;
+        }
+        z-index: 4;
+        font-size: 3rem;
+        cursor: pointer;
+        &:hover {
+            -webkit-animation-name: rocketShake;  
+            -webkit-animation-duration: .5s;
+        }
+    }
 }
 
 #postArticleNav {
