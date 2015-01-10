@@ -79,11 +79,12 @@
     }
 
     function returnViewTopFunc (event) {
-        $('#returnViewTop').on('click', function (event) {
-            event.preventDefault();
-            $('html, body').animate({
-                'scrollTop': 0
-            });
+        $('.returnViewTop i').on('click', function (event) {
+            // event.preventDefault();
+            // $('html, body').animate({
+            //     'scrollTop': 0
+            // });
+            alert(1);
         });
     }
 

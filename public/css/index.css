@@ -541,8 +541,7 @@ body {
     #footer p a:nth-child(4) i {
       color: #FFC028; }
 
-#returnViewTop {
-  height: 3rem;
+.returnViewTop {
   width: 100%; }
 @-webkit-keyframes rocketShake {
   0%, 100% {
@@ -553,7 +552,7 @@ body {
   20%, 40%, 60%, 80% {
     -webkit-transform: translateY(2px);
     -webkit-color: #333; } }
-  #returnViewTop i {
+  .returnViewTop i {
     position: fixed;
     right: 5rem;
     bottom: 1.2rem;
@@ -561,10 +560,10 @@ body {
     font-size: 3rem;
     cursor: pointer; }
     @media screen and (min-width: 320px) and (max-width: 540px) {
-      #returnViewTop i {
+      .returnViewTop i {
         right: 3px;
         bottom: 5px; } }
-    #returnViewTop i:hover {
+    .returnViewTop i:hover {
       -webkit-animation-name: rocketShake;
       -webkit-animation-duration: .5s; }
 

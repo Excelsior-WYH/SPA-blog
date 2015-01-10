@@ -640,7 +640,7 @@ body {
     }
 }
 
-#returnViewTop {
+.returnViewTop {
     @-webkit-keyframes rocketShake {  
         0%, 100% {
             -webkit-transform: translateY(0);
@@ -656,7 +656,6 @@ body {
             -webkit-color: #333;
         }  
     }
-    height: 3rem;
     width: 100%;
     i {
         position:fixed;

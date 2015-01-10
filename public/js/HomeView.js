@@ -145,34 +145,6 @@
                 that.pushViewData(_id);
             }
         },
-        showPhoneNavFunc: function (event) {
-            event.preventDefault();
-            var that = this;
-            var $phoneNav = $('#phoneNav');
-            $phoneNav.css('height', $(window).height());
-            $phoneNav.animate({
-                'opacity': 1,
-                'left': 0
-            }, {
-                easing: 'easeInOutQuad',
-                duration: 350,
-                complete: function () {
-                    $('body').css('overflow-y', 'hidden');
-                }
-            });
-        },
-        hidePhoneNavFunc: function (event) {
-            $('#phoneNav').animate({
-                'opacity': 0,
-                'left': -20 + 'rem'
-            }, {
-                easing: 'easeInOutQuad',
-                duration: 350,
-                complete: function () {
-                   $('body').css('overflow-y', 'auto');
-                }
-            });
-        },
         pushViewData: function (_id, number) {
             var template = this.template({article: c_articles.get(_id).attributes});
             $(this.el).append(template);
