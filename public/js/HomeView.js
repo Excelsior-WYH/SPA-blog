@@ -14,8 +14,8 @@
         initialize: function () {
         },
         events: {
-            'click #goTop i': 'goTopFunc'
-        },
+
+        }
             
     });
 
@@ -55,7 +55,8 @@
         events: {
             'click #articles article h2': 'articleDetailFunc', // 跳转详情页
             'click #articles .comment': 'postCommentFunc', // 发表评论
-            'click #articles .praise': 'articlePraiseFunc' // 发表评论
+            'click #articles .praise': 'articlePraiseFunc', // 发表评论
+            'click .returnViewTop i': 'returnViewTopFunc'
         },
         articleShowAnimate: function (element, position) {
             $(element).css(position, -5 + 'rem');
@@ -111,6 +112,11 @@
                 }
             });
         },
+        returnViewTopFunc: function () {
+            $('html, body').animate({
+                'scrollTop': 0
+            });
+        }
     });
     
 

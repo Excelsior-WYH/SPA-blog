@@ -78,15 +78,6 @@
         })
     }
 
-    function returnViewTopFunc (event) {
-        $('.returnViewTop i').on('click', function (event) {
-            // event.preventDefault();
-            // $('html, body').animate({
-            //     'scrollTop': 0
-            // });
-            alert(1);
-        });
-    }
 
     function phoneNavShowFunc () {
         var $phoneNav = $('#phoneNav');

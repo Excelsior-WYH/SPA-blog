@@ -19,10 +19,10 @@
         (function () {
             showWithAnimate($('#articles'), 800);
             changeTitle('Excelsior Blog | Do Something');
-            returnViewTopFunc();
             phoneNavShowFunc();
             phoneNavHideFunc();
         })();
+            returnViewTopFunc();
     });
     router.on('route:articleDetail', function (_id) {
         new V_Detail(_id);
