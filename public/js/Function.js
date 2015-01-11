@@ -88,7 +88,7 @@
                 easing: 'easeInOutQuad',
                 duration: 350,
                 complete: function () {
-                    $('body').css('overflow-y', 'hidden');
+                    $('body').css({'overflow-y', 'hidden');
                 }
             });
         });
