@@ -117,7 +117,7 @@
                 'data-thread-key': _id,
                 'data-title': title,
                 'data-url': '127.0.0.1:3000/#detail/' + _id
-            })
+            });
             DUOSHUO.EmbedThread($duoshuo);
             $('#duoshuoCommentForm').append($duoshuo).animate({
                 'opacity': 1

@@ -44,37 +44,33 @@
 
         var $searchInput = $('#searchInput');
 
-        $('#searchBtn').on('click', function (event) {
-            parseInt($searchInput.css('width')) == 0 ? _triggerSearchInput(true) : _triggerSearchInput(false);
-        });
+        $('#searchBtn').on('click', parseInt($searchInput.css('width')) === 0 ? searchInputShow : searchInputHide);
 
-        $searchInput.on('blur', function (event) {
-            _triggerSearchInput(false);
-        });
+        $searchInput.on('blur', searchInputHide);
 
 
-        function _triggerSearchInput (flag) {
-            if(flag === true){
+        function searchInputShow () {
+            $searchInput.animate({
+                'opacity': 1,
+                'width': '7rem'
+            }, {
+                easing: 'easeInOutQuad',
+                duration: 300,
+                complete: function () {
+                    $searchInput.focus();
+                }
+            });
+        }      
+
+        function searchInputHide () {
+            if(!$.trim($searchInput.val())){
                 $searchInput.animate({
-                    'opacity': 1,
-                    'width': '7rem'
+                    'opacity': 0,
+                    'width': 0
                 }, {
                     easing: 'easeInOutQuad',
-                    duration: 300,
-                    complete: function () {
-                        $searchInput.focus();
-                    }
+                    duration: 300
                 });
-            }else {
-                if(!$.trim($searchInput.val())){
-                    $searchInput.animate({
-                        'opacity': 0,
-                        'width': 0
-                    }, {
-                        easing: 'easeInOutQuad',
-                        duration: 300
-                    });
-                }
             }
         }
     })();
