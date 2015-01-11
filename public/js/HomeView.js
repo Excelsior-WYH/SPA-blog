@@ -1,32 +1,10 @@
 
-    var V_Header = Backbone.View.extend({
-        template: _.template($('#T_Header').html()),
-        events: {
-            'touchstart #phoneNavShowBtn': 'showPhoneNavFunc' // 菜单显示
-        },
-        render: function (event) {
-
-        }
-        
-    });
-    var V_Footer = Backbone.View.extend({
-        template: _.template($('#T_Footer').html()),
-        initialize: function () {
-        },
-        events: {
-
-        }
-            
-    });
-
-    var v_header = new V_Header();
-    var v_footer = new V_Footer();
 
     /**
      *  首页视图
      */
     var V_Index = Backbone.View.extend({
-        el: '#container',
+        el: '#content',
         template: _.template($('#T_Index').html()),
         initialize: function () {
             this.render();
@@ -34,16 +12,13 @@
         flag: true,
         render: function () {
             var that = this;
-            var v_header = new V_Header();
-            $(that.el).html(v_header.template()); // 头部
             c_articles.fetch({
                 success: function (collection, response) {
                     if(collection.models){
                         var template = that.template({articles: response});
-                        $(that.el).append(template); // 主体
-                        $(that.el).append(v_footer.template()); // 尾部
-                        $.each($('#articles article'), function (index, article) {
-                            index % 2 === 0 ? that.articleShowAnimate(article, 'left') : that.articleShowAnimate(article, 'right');
+                        $(that.el).html(template); // 主体
+                        $.each($('#content article'), function (index, article) {
+                            index % 2 === 0 ? articleShowAnimate(article, 'left') : articleShowAnimate(article, 'right');
                         });
                     }
                 },
@@ -53,58 +28,26 @@
             });
         },
         events: {
-            'click #articles article h2': 'articleDetailFunc', // 跳转详情页
-            'click #articles .comment': 'postCommentFunc', // 发表评论
-            'click #articles .praise': 'articlePraiseFunc', // 发表评论
-            'click .returnViewTop i': 'returnViewTopFunc'
-        },
-        articleShowAnimate: function (element, position) {
-            $(element).css(position, -5 + 'rem');
-            switch (position) {
-                case 'left':
-                    $(element).animate({
-                        'opacity': 1,
-                        'left': 0
-                    }, {
-                        easing: 'easeInOutQuad',
-                        duration: 1000,
-                        complete: function () {
-                            // $(element).css({'position': 'auto'});
-                        }
-                    });
-                case 'right':
-                    $(element).animate({
-                        'opacity': 1,
-                        'right': 0
-                    }, {
-                        easing: 'easeInOutQuad',
-                        duration: 1000,
-                        complete: function () {
-
-                        }
-                    });
-            }
-        },
-        articleDetailFunc: function (event) {
-            event.preventDefault();
-            router.navigate('detail/' + $(event.currentTarget).data('id'), true);
+            'click #content .comment': 'postCommentFunc', // 发表评论
+            'click #content .praise': 'articlePraiseFunc', // 发表评论
+            'click #searchBtn': 'searchArticleFunc'
         },
         postCommentFunc: function (event) {
             event.preventDefault();
-            var _this = this;
-            var _id = $(event.currentTarget).data('id');
-            router.navigate('detail/' + 2, true);
+            var _id = $(event.currentTarget).parent().parent('h2').data('id')
+            router.navigate('detail/' + _id, true);
         },
         articlePraiseFunc: function (event) {
-            var _this = this;
+            event.preventDefault();
             var self = $(event.currentTarget); // 点击SPAN元素
-            m_praise.save({articleID: self.data('id')}, {
+            var _id = self.parentsUntil('article').find('a').attr('href'); 
+            m_praise.save({articleID: _id}, {
                 success: function (model, response) {
                     if(response.status === 100){
                         alert(response.info);
                     }else {
-                        self.find('i').css('color', '#E87A90').html('&#xe60e;');
-                        self.find('b').html(parseInt(self.find('b').html()) + 1);
+                        self.find('i').css('color', '#E87A90').text('&#xe60e;');
+                        self.find('b').text(parseInt(self.find('b').text()) + 1);
                     }
                 },
                 error: function (model, response) {
@@ -112,10 +55,11 @@
                 }
             });
         },
-        returnViewTopFunc: function () {
-            $('html, body').animate({
-                'scrollTop': 0
-            });
+        searchArticleFunc: function (event) {
+            $searchInput = $('#searchInput');
+            if($.trim($searchInput.val())){
+
+            }
         }
     });
     
@@ -129,18 +73,16 @@
      * @return {[type]} [description]
      */
     var V_Detail = Backbone.View.extend({
-        el: '#container',
+        el: '#content',
         initialize: function (_id) {
             this.render(_id);
         },
         template: _.template($('#T_ArticleDetail').html()),
         events: {
-            'touchstart #phoneNavShowBtn': 'showPhoneNavFunc', // 菜单显示
-            'touchstart #phoneNavHideBtn': 'hidePhoneNavFunc', // 菜单隐藏
+            'click .commentFormShowBtn': 'commentFormShowFunc' 
         },
         render: function (_id) {
             var that = this;
-            $(this.el).html(v_header.template()); // 头部
             if(c_articles.get(_id) === undefined) {
                 c_articles.fetch({
                     success: function (collection, response) {
@@ -153,7 +95,7 @@
         },
         pushViewData: function (_id, number) {
             var template = this.template({article: c_articles.get(_id).attributes});
-            $(this.el).append(template);
+            $(this.el).html(template);
             // alert($('#article article').width());
             // alert();
             // var $article = $('#article article');
@@ -166,10 +108,20 @@
             //     easing: 'easeInOutQuad',
             //     duration: 2700
             // });
-            $(this.el).append(v_footer.template()); // 尾部
         },
-        events: {
-
+        commentFormShowFunc: function (event) {
+            var $duoshuo = $('<div></div>'),
+                _id = $('h2').data('id'),
+                title = $('h2').text();
+            $duoshuo.attr({
+                'data-thread-key': _id,
+                'data-title': title,
+                'data-url': '127.0.0.1:3000/#detail/' + _id
+            })
+            DUOSHUO.EmbedThread($duoshuo);
+            $('#duoshuoCommentForm').append($duoshuo).animate({
+                'opacity': 1
+            });
         }
     });
 

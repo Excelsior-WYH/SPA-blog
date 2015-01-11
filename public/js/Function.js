@@ -1,6 +1,5 @@
 
-    /**
-     */
+    
     function showWithAnimate(element, time){
         element.animate({
             'opacity': 1
@@ -13,12 +12,12 @@
         })
     }
 
-    function changeTitle(text) {
+    function setPageTitle (text) {
         $('title').html(text)
     }
 
 
-    function checkIsLogin(flag, that, viewData){
+    function checkIsLogin (flag, that, viewData) {
         if(flag == true) { // 登录才显示的页面
             if(!$.cookie('id')){
                 alert('请先登录!');
@@ -37,49 +36,52 @@
     }
 
 
-    function showSearchInput(){
-        // var $width = parseInt($('#search').css('width'));
-        // var flag = false;
-        // $('#search').css({'width': 0, 'opacity': 0});
-        // $('form').find('i').on('click', function (event) {
-        //     if (!flag){
-        //         $('#search').animate({
-        //             'opacity': 1,
-        //             'width': 7 + 'rem'
-        //         }, {
-        //             easing: 'easeInOutQuad',
-        //             duration: 300,
-        //             complete: function () {
-        //                 $('#search').focus();
-        //                 flag = true;
-        //             }
-        //         })
-        //     }
-        // });
-        // if(flag) {
-            
-        // }
-        // function hideSearchInput(){
-        //     $('#search').blur(function(event){
-        //         $('#search').animate({
-        //             'opacity': 0,
-        //             'width': 0
-        //         }, {
-        //             easing: 'easeInOutQuad',
-        //             duration: 300,
-        //             complete: function () {
+    /**
+     * [triggerSearchInput 搜索框切换]
+     * @return {[type]} [description]
+     */
+    (function triggerSearchInput () {
 
-        //             }
-        //         })
-        //     })
-        // }
-        $('#searchBtn').click(function(){
-            alert(1);
-        })
-    }
+        var $searchInput = $('#searchInput');
+
+        $('#searchBtn').on('click', function (event) {
+            parseInt($searchInput.css('width')) == 0 ? _triggerSearchInput(true) : _triggerSearchInput(false);
+        });
+
+        $searchInput.on('blur', function (event) {
+            _triggerSearchInput(false);
+        });
 
 
-    function phoneNavShowFunc () {
+        function _triggerSearchInput (flag) {
+            if(flag === true){
+                $searchInput.animate({
+                    'opacity': 1,
+                    'width': '7rem'
+                }, {
+                    easing: 'easeInOutQuad',
+                    duration: 300,
+                    complete: function () {
+                        $searchInput.focus();
+                    }
+                });
+            }else {
+                if(!$.trim($searchInput.val())){
+                    $searchInput.animate({
+                        'opacity': 0,
+                        'width': 0
+                    }, {
+                        easing: 'easeInOutQuad',
+                        duration: 300
+                    });
+                }
+            }
+        }
+    })();
+
+
+    
+    (function phoneNavShowFunc () {
         var $phoneNav = $('#phoneNav');
         $('#phoneNavShowBtn').on('click', function () {
             $phoneNav.css('height', $(window).height());
@@ -94,10 +96,10 @@
                 }
             });
         });
-    }
+    })();
 
 
-    function phoneNavHideFunc (event) {
+    (function phoneNavHideFunc () {
         $('#phoneNavHideBtn').on('click', function(){
             $('#phoneNav').animate({
                 'opacity': 0,
@@ -110,4 +112,62 @@
                 }
             });
         })
+    })();
+
+
+    function phoneNavHideGlobal () {
+        if(parseInt($('#phoneNav').css('opacity')) == 1){
+            $('document').on('click', function (event) {
+                console.log($(event.target));
+                console.log($(event.currentTarget));
+            })
+        }
     }
+
+
+    function articleShowAnimate (element, position) {
+        $(element).css(position, -5 + 'rem').css('opacity', 0);
+        switch (position) {
+            case 'left':
+                $(element).animate({
+                    'opacity': 1,
+                    'left': 0
+                }, {
+                    easing: 'easeInOutQuad',
+                    duration: 2000,
+                    complete: function () {
+                        // $(element).css({'position': 'auto'});
+                    }
+                });
+            case 'right':
+                $(element).animate({
+                    'opacity': 1,
+                    'right': 0
+                }, {
+                    easing: 'easeInOutQuad',
+                    duration: 2000,
+                    complete: function () {
+
+                    }
+                });
+        }
+    }
+
+
+    /**
+     * [returnViewTopFunc 回到顶部]
+     * @return {[type]} [description]
+     */
+    (function returnViewTopFunc () {
+        $('.returnViewTop i').on('click', function () {
+            $('html, body').animate({
+                'scrollTop': 0
+            }, {
+                easing: 'easeInOutQuad',
+                duration: 1300,
+                complete: function () {
+
+                }
+            });
+        })
+    })();

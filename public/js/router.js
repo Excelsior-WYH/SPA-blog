@@ -6,6 +6,7 @@
         routes: {
             '': 'index',
             'detail/:_id': 'articleDetail',
+            'search/:content': 'searchArticle',
             'admin': 'adminSignIn',
             'admin/index': 'adminIndex',
             'admin/post': 'postArticle'
@@ -16,26 +17,31 @@
 
     router.on('route:index', function () {
         new V_Index();
+
         (function () {
-            showWithAnimate($('#articles'), 800);
-            changeTitle('Excelsior Blog | Do Something');
-            phoneNavShowFunc();
-            phoneNavHideFunc();
+            setPageTitle('Excelsior Blog | Do Something');
+            phoneNavHideGlobal();
         })();
-            returnViewTopFunc();
     });
     router.on('route:articleDetail', function (_id) {
         new V_Detail(_id);
+
         (function () {
-            phoneNavShowFunc();
-            phoneNavHideFunc();
+            
+        })();
+    });
+    router.on('route:searchArticle', function (content) {
+        new V_Detail(_id);
+        
+        (function () {
+            
         })()
     });
     router.on('route:adminSignIn', function () {
         (function () {
             new V_SignIn();
             showWithAnimate($('#signIn'), 800);
-            changeTitle('后台登录');
+            setPageTitle('后台登录');
         })();
     });
     router.on('route:adminIndex', function () {
@@ -46,7 +52,7 @@
         (function () {
             new V_PostArticle();
             showWithAnimate($('#postArticleMain'), 800);
-            changeTitle('发表文章');
+            setPageTitle('发表文章');
         })();
     });
 
