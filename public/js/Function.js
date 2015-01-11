@@ -104,7 +104,7 @@
                 easing: 'easeInOutQuad',
                 duration: 350,
                 complete: function () {
-                   $('body').css('overflow-y', 'auto');
+                   $('body').css({'overflow-y', 'auto'});
                 }
             });
         })
