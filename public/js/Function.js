@@ -1,10 +1,20 @@
 
-    
+    (function () {
+        jQuery.easing.def = 'easeInOutQuad';
+    })();
+
+    function deviceIsPc () {
+        return parseInt($(window).width()) > 1000 ? true : false;
+    }
+
+    function deviceIsMobile (argument) {
+        return $(window).width() > 310 && $(window).width() < 520  ? true : false;
+    }
+
     function showWithAnimate(element, time){
         element.animate({
             'opacity': 1
         }, {
-            easing: 'easeInOutQuad',
             duration: time,
             complete: function () {
 
@@ -40,68 +50,84 @@
      * [triggerSearchInput 搜索框切换]
      * @return {[type]} [description]
      */
-    (function triggerSearchInput () {
+    (function searchInpuSwitch () {
 
-        var $searchInput = $('#searchInput');
+        var flag = false; // 锁, 默认关闭状态
 
-        $('#searchBtn').on('click', parseInt($searchInput.css('width')) === 0 ? searchInputShow : searchInputHide);
+        var $searchInput = $('#searchInput'),
+            $searchBtn = $('#searchBtn');
 
-        $searchInput.on('blur', searchInputHide);
+        if (deviceIsPc()) {
+            $searchBtn.on('click', !flag ? _searchInputShow : _searchInputHide);
+        }else if (deviceIsMobile()) {
+            touch.on($searchBtn, 'touchstart', !flag ? _searchInputShow : _searchInputHide);
+        }
+
+        $searchInput.on('blur', _searchInputHide);
 
 
-        function searchInputShow () {
-            $searchInput.animate({
-                'opacity': 1,
-                'width': '7rem'
-            }, {
-                easing: 'easeInOutQuad',
-                duration: 300,
-                complete: function () {
-                    $searchInput.focus();
-                }
-            });
+        function _searchInputShow () {
+            if (flag === false) {
+                $searchInput.animate({
+                    opacity: 1,
+                    width: '7rem'
+                }, {
+                    duration: 300,
+                    complete: function () {
+                        flag = true;
+                        $searchInput.focus();
+                    }
+                });
+            }
         }      
 
-        function searchInputHide () {
-            if(!$.trim($searchInput.val())){
+        function _searchInputHide () {
+            if (flag === true && !$.trim($searchInput.val())) {
                 $searchInput.animate({
-                    'opacity': 0,
-                    'width': 0
+                    opacity: 0,
+                    width: 0
                 }, {
-                    easing: 'easeInOutQuad',
-                    duration: 300
+                    duration: 300,
+                    complete : function () {
+                        flag = false;
+                    }
                 });
             }
         }
+
     })();
 
 
     
     (function phoneNavShowFunc () {
+
         var $phoneNav = $('#phoneNav');
-        $('#phoneNavShowBtn').on('click', function () {
+
+        touch.on($('#phoneNavShowBtn'), 'touchstart', _phoneNavShowFunc);
+        
+
+        function _phoneNavShowFunc () {
             $phoneNav.css('height', $(window).height());
             $phoneNav.animate({
-                'opacity': 1,
-                'left': 0
+                opacity: 1,
+                left: 0
             }, {
-                easing: 'easeInOutQuad',
                 duration: 350,
                 complete: function () {
-                    $('body').css({'overflow-y', 'hidden');
+                    $('body').css('overflow-y', 'hidden');
                 }
             });
-        });
+        }
+
     })();
 
 
     (function phoneNavHideFunc () {
         $('#phoneNavHideBtn').on('click', function(){
             $('#phoneNav').animate({
-                'opacity': 0,
-                'left': '-18rem'
+                opacity: 0,
+                left: '-18rem'
             }, {
-                easing: 'easeInOutQuad',
                 duration: 350,
                 complete: function () {
                    $('body').css('overflow-y', 'auto');
@@ -126,26 +152,14 @@
         switch (position) {
             case 'left':
                 $(element).animate({
-                    'opacity': 1,
-                    'left': 0
-                }, {
-                    easing: 'easeInOutQuad',
-                    duration: 2000,
-                    complete: function () {
-                        // $(element).css({'position': 'auto'});
-                    }
-                });
+                    opacity: 1,
+                    left: 0
+                }, 2000);
             case 'right':
                 $(element).animate({
-                    'opacity': 1,
-                    'right': 0
-                }, {
-                    easing: 'easeInOutQuad',
-                    duration: 2000,
-                    complete: function () {
-
-                    }
-                });
+                    opacity: 1,
+                    right: 0
+                }, 2000);
         }
     }
 
@@ -155,15 +169,21 @@
      * @return {[type]} [description]
      */
     (function returnViewTopFunc () {
-        $('.returnViewTop i').on('click', function () {
-            $('html, body').animate({
-                'scrollTop': 0
-            }, {
-                easing: 'easeInOutQuad',
-                duration: 1300,
-                complete: function () {
 
-                }
-            });
-        })
+        var returnViewTopBtn = $('.returnViewTop i');
+        
+        if (deviceIsMobile()) {
+            touch.on(returnViewTopBtn, 'touchstart', _returnViewTopFunc);
+        }else if (deviceIsPc()) {
+            returnViewTopBtn.on('click', _returnViewTopFunc)
+        }
+
+        function _returnViewTopFunc (event) {
+            if($('body').scrollTop() > 100) {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 1300);
+            }
+        }
+
     })();

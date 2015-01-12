@@ -24,6 +24,7 @@
      * @param response
      */
     exports.articlesList = function (request, response) {
+        response.set("Access-Control-Allow-Origin", "*");
         ArticleModel.findAll(function (error, articles) {
             if(error !== null){
                 console.log(error);
@@ -89,7 +90,7 @@
                                 article.save(function (error, article) {
                                     if(error != null) console.log(error);
                                     if(article != null) {
-                                        return response.status(200).json({info: 'now点赞成功'});
+                                        return response.status(200).json({info: '点赞成功'});
                                     }
                                 });
                             }

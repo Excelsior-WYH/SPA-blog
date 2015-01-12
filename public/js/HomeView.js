@@ -9,7 +9,6 @@
         initialize: function () {
             this.render();
         },
-        flag: true,
         render: function () {
             var that = this;
             c_articles.fetch({
@@ -56,10 +55,10 @@
             });
         },
         searchArticleFunc: function (event) {
-            $searchInput = $('#searchInput');
-            if($.trim($searchInput.val())){
+            // $searchInput = $('#searchInput');
+            // if($.trim($searchInput.val())){
 
-            }
+            // }
         }
     });
     
