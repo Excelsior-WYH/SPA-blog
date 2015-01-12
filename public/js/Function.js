@@ -60,7 +60,7 @@
         if (deviceIsPc()) {
             $searchBtn.on('click', !flag ? _searchInputShow : _searchInputHide);
         }else if (deviceIsMobile()) {
-            touch.on($searchBtn, 'touchstart', !flag ? _searchInputShow : _searchInputHide);
+            touch.on($searchBtn, 'tap', !flag ? _searchInputShow : _searchInputHide);
         }
 
         $searchInput.on('blur', _searchInputHide);
@@ -79,7 +79,7 @@
         }      
 
         function _searchInputHide () {
-            if (flag === true && !$.trim($searchInput.val())) {
+            if (flag === true && !!!$.trim($searchInput.val())) {
                 $searchInput.animate({
                     opacity: 0,
                     width: 0
@@ -97,8 +97,8 @@
 
         var $phoneNav = $('#phoneNav');
 
-        touch.on($('#phoneNavShowBtn'), 'touchstart', _phoneNavShowFunc);
-        
+        touch.on($('#phoneNavShowBtn'), 'hold tap doubletap', _phoneNavShowFunc);
+        $('#phoneNavShowBtn').on('click', _phoneNavShowFunc);
 
         function _phoneNavShowFunc () {
             $phoneNav.css('height', $(window).height());
@@ -114,14 +114,14 @@
 
 
     (function phoneNavHideFunc () {
-        $('#phoneNavHideBtn').on('touchstart', function(){
+        touch.on($('#phoneNavHideBtn'), 'hold tap doubletap', function () {
             $('#phoneNav').animate({
                 opacity: 0,
                 left: '-18rem'
             }, 350, function () {
                 $('body').css('overflow-y', 'auto');
             });
-        })
+        });
     })();
 
 
@@ -142,12 +142,12 @@
                 $(element).animate({
                     opacity: 1,
                     left: 0
-                }, 2000);
+                }, 1400);
             case 'right':
                 $(element).animate({
                     opacity: 1,
                     right: 0
-                }, 2000);
+                }, 1400);
         }
     }
 
@@ -162,14 +162,14 @@
             
         
         if (deviceIsMobile()) {
-            touch.on($returnViewTopBtn, 'touchstart', _returnViewTopFunc);
+            touch.on($returnViewTopBtn, 'hold tap doubletap', _returnViewTopFunc);
         }else if (deviceIsPc()) {
             $returnViewTopBtn.on('click', _returnViewTopFunc);
         }
 
         function _returnViewTopFunc (event) {
             var $scrollTop = $('body').scrollTop();
-            if($scrollTop > 100) {
+            if($scrollTop > 50) {
                 $('html, body').animate({
                     scrollTop: 0
                 }, $scrollTop / 0.5);

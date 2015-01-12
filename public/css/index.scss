@@ -33,6 +33,11 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+
+.animate {
+    transform: translate3D(100px, 0, 0);
+}
+
 .icon-github:before { content: "\e611"; }
 
 .icon-douban:before { content: "\e612"; }
@@ -347,6 +352,7 @@ body {
     height: 2rem;
     cursor: pointer;
     color: #BDC0BA;
+    transition: transform .5s ease-out;
     @media screen and (min-width: 320px) and (max-width: 540px){
         display: block;
         font-size: 2.8rem;
@@ -365,6 +371,7 @@ body {
     background: #333;
     box-shadow: inset 0 0 5px 5px #222;
     z-index: 9999;
+
     ul {
         width: 100%;
         li {
@@ -521,7 +528,6 @@ body {
                 height:50px; 
                 border-radius: 50%;
                 box-shadow: inset 0 -1px 0 #333;
-                -webkit-box-shadow: inset 0 -1px 0 #333;
                 -webkit-transition: 0.4s;
                 -webkit-transition: -webkit-transform 0.4s ease-out;
                 transition: transform 0.4s ease-out;
