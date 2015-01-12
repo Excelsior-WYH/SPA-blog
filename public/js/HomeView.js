@@ -109,18 +109,27 @@
             // });
         },
         commentFormShowFunc: function (event) {
-            var $duoshuo = $('<div></div>'),
-                _id = $('h2').data('id'),
-                title = $('h2').text();
-            $duoshuo.attr({
-                'data-thread-key': _id,
-                'data-title': title,
-                'data-url': '127.0.0.1:3000/#detail/' + _id
+            
+            var $duoshuoForm = $('<div></div>');
+
+            $duoshuoForm.attr({
+                'data-thread-key': $('h2').data('id'),
+                'data-title': $('h2').text(),
+                'data-url': '127.0.0.1:3000/#detail/' + $('h2').data('id')
             });
-            DUOSHUO.EmbedThread($duoshuo);
-            $('#duoshuoCommentForm').append($duoshuo).animate({
-                'opacity': 1
-            });
+
+            DUOSHUO.EmbedThread($duoshuoForm);
+            
+            var $container = $('#duoshuoCommentForm'); // 容器
+
+            if ($container.find('div').length === 0) {
+                $container.append($duoshuoForm).animate({
+                    opacity: 1,
+                    height: 'auto'
+                }, 300);
+            }else {
+                $container.empty();
+            }
         }
     });
 

@@ -71,12 +71,9 @@
                 $searchInput.animate({
                     opacity: 1,
                     width: '7rem'
-                }, {
-                    duration: 300,
-                    complete: function () {
-                        flag = true;
-                        $searchInput.focus();
-                    }
+                }, 300, function () {
+                    flag = true;
+                    $searchInput.focus();
                 });
             }
         }      
@@ -86,11 +83,8 @@
                 $searchInput.animate({
                     opacity: 0,
                     width: 0
-                }, {
-                    duration: 300,
-                    complete : function () {
-                        flag = false;
-                    }
+                }, 300, function () {
+                    flag = false;
                 });
             }
         }
@@ -111,11 +105,8 @@
             $phoneNav.animate({
                 opacity: 1,
                 left: 0
-            }, {
-                duration: 350,
-                complete: function () {
-                    $('body').css('overflow-y', 'hidden');
-                }
+            }, 350, function () {
+                $('body').css('overflow-y', 'hidden');
             });
         }
 
@@ -123,15 +114,12 @@
 
 
     (function phoneNavHideFunc () {
-        $('#phoneNavHideBtn').on('click', function(){
+        $('#phoneNavHideBtn').on('touchstart', function(){
             $('#phoneNav').animate({
                 opacity: 0,
                 left: '-18rem'
-            }, {
-                duration: 350,
-                complete: function () {
-                   $('body').css('overflow-y', 'auto');
-                }
+            }, 350, function () {
+                $('body').css('overflow-y', 'auto');
             });
         })
     })();
@@ -170,19 +158,21 @@
      */
     (function returnViewTopFunc () {
 
-        var returnViewTopBtn = $('.returnViewTop i');
+        var $returnViewTopBtn = $('.returnViewTop i');
+            
         
         if (deviceIsMobile()) {
-            touch.on(returnViewTopBtn, 'touchstart', _returnViewTopFunc);
+            touch.on($returnViewTopBtn, 'touchstart', _returnViewTopFunc);
         }else if (deviceIsPc()) {
-            returnViewTopBtn.on('click', _returnViewTopFunc)
+            $returnViewTopBtn.on('click', _returnViewTopFunc);
         }
 
         function _returnViewTopFunc (event) {
-            if($('body').scrollTop() > 100) {
+            var $scrollTop = $('body').scrollTop();
+            if($scrollTop > 100) {
                 $('html, body').animate({
                     scrollTop: 0
-                }, 1300);
+                }, $scrollTop / 0.5);
             }
         }
 
