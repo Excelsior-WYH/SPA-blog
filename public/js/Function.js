@@ -98,7 +98,7 @@
         var $phoneNav = $('#phoneNav');
 
         touch.on($('#phoneNavShowBtn'), 'hold tap doubletap', _phoneNavShowFunc);
-        $('#phoneNavShowBtn').on('click', _phoneNavShowFunc);
+        
 
         function _phoneNavShowFunc () {
             $phoneNav.css('height', $(window).height());
@@ -108,6 +108,10 @@
             }, 350, function () {
                 $('body').css('overflow-y', 'hidden');
             });
+            // if (!!$phoneNav.addClass('animate')) {
+            //     $('html, body').css('overflow-y', 'hidden');  
+            //     alert($('body').css('overflow-y'));
+            // }
         }
 
     })();
@@ -133,6 +137,8 @@
             })
         }
     }
+
+
 
 
     function articleShowAnimate (element, position) {

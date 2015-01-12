@@ -21,9 +21,6 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale; }
 
-.animate {
-  transform: translate3D(100px, 0, 0); }
-
 .icon-github:before {
   content: "\e611"; }
 
@@ -119,7 +116,15 @@ body {
   height: 100%;
   background-color: #FCFAF2;
   background-image: url(../images/texture.png);
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  perspective: 1000; }
 
 @media only screen and (min-width: 320px) and (max-width: 360px) {
   html {
@@ -310,18 +315,19 @@ body {
     #phoneNavShowBtn {
       display: block;
       font-size: 2.8rem; } }
-  #phoneNavShowBtn:hover {
-    transition: .2s; }
+
+.animate {
+  -webkit-transform: translate3d(20rem, 0, 0);
+  opacity: 1; }
 
 #phoneNav {
   width: 20rem;
   position: absolute;
   top: 0;
   left: -20rem;
-  opacity: 0;
   background: #333;
-  box-shadow: inset 0 0 5px 5px #222;
-  z-index: 9999; }
+  z-index: 9999;
+  -webkit-transition: -webkit-transform .3s ease-in; }
   #phoneNav ul {
     width: 100%; }
     #phoneNav ul li {
