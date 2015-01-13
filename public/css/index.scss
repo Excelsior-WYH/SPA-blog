@@ -382,17 +382,9 @@ input {
     }
 }
 
-.phoneNavShowTrans {
-    -webkit-opacity: 1;
-    -webkit-transform: translate3d(19.8rem, 0, 0);
-}
-.phoneNavHideTrans {
-    -webkit-opacity: 0;
-    -webkit-transform: translate3d(-20rem, 0, 0);
-}
-
 #phoneNav {
     width: 20rem;
+    height: 100%;
     position: absolute;
     top: 0;
     left: -20rem;
@@ -460,17 +452,16 @@ input {
         margin: 0 auto 3rem;
         padding-top: 0.4rem;
         min-height: 1rem;        
-        max-heihgt: 30rem;
         overflow-y: hidden;
         width: 40rem;
+        opacity: 0;
         @media screen and (min-width: 320px) and (max-width: 540px) {
             width: 25rem;
         }
         background: #FCFAF2;
         border: 1px solid #aaa;
         border-radius: 2px;
-        // box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.2);
-        // box-shadow: 0 1px 10px #58B1B9;
+        -webkit-transition: all 1.5s ease-in;
         h2 {
             @include pmClear;
             margin: 0.3rem 0 0.5rem;
@@ -528,6 +519,12 @@ input {
                 margin-left: 0;
             }
         }
+    }
+    article:nth-child(odd) {
+        left: -5rem;
+    }
+    article:nth-child(even) {
+        right: -5rem;
     }
 }
 

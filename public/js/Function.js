@@ -110,7 +110,7 @@
         var $phoneNav = $('#phoneNav');
 
         touch.on($('#phoneNavShowBtn'), 'hold tap doubletap', function () {
-            $('#phoneNav').css('height', $(window).height());
+            // $('#phoneNav').css('height', $(window).height());
 
             $phoneNav.css({'transform': 'translate3d(19.8rem, 0, 0)', 'opacity': 1});
 
@@ -124,7 +124,7 @@
 
         touch.on($('#phoneNavHideBtn'), 'hold tap doubletap', function () {
 
-            $('#phoneNav').css({'transform': 'translate3d(-20rem, 0, 0)', 'opacity': 0, 'height': 0});
+            $('#phoneNav').css({'transform': 'translate3d(-20rem, 0, 0)', 'opacity': 0});
 
             $('body').css('overflow-y', 'auto');  
         });
@@ -145,18 +145,10 @@
 
 
     function articleShowAnimate (element, position) {
-        $(element).css(position, -5 + 'rem').css('opacity', 0);
-        switch (position) {
-            case 'left':
-                $(element).animate({
-                    opacity: 1,
-                    left: 0
-                }, 1400);
-            case 'right':
-                $(element).animate({
-                    opacity: 1,
-                    right: 0
-                }, 1400);
+        if(position == 'left') {
+            $(element).css({'transform': 'translate3d(5rem, 0, 0)', 'opacity': 1});
+        }else if (position == 'right') {
+            $(element).css({'transform': 'translate3d(-5rem, 0, 0)', 'opacity': 1});
         }
     }
 
@@ -171,7 +163,6 @@
             $returnViewTopBtn = $('.toolBar i:last');
         
         if (userAgent.isMobile()) {
-            $('#phoneNav').css({'transform': 'translate3d(-20rem, 0, 0)', 'opacity': 0, 'height': 0});
             touch.on($returnViewHomeBtn, 'hold tap doubletap', _returnViewHomeFunc);
             touch.on($returnViewTopBtn, 'hold tap doubletap', _returnViewTopFunc);
         }

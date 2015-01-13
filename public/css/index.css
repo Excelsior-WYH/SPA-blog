@@ -316,16 +316,9 @@ input {
       display: block;
       font-size: 3.2rem; } }
 
-.phoneNavShowTrans {
-  -webkit-opacity: 1;
-  -webkit-transform: translate3d(19.8rem, 0, 0); }
-
-.phoneNavHideTrans {
-  -webkit-opacity: 0;
-  -webkit-transform: translate3d(-20rem, 0, 0); }
-
 #phoneNav {
   width: 20rem;
+  height: 100%;
   position: absolute;
   top: 0;
   left: -20rem;
@@ -384,12 +377,13 @@ input {
     margin: 0 auto 3rem;
     padding-top: 0.4rem;
     min-height: 1rem;
-    max-heihgt: 30rem;
     overflow-y: hidden;
     width: 40rem;
+    opacity: 0;
     background: #FCFAF2;
     border: 1px solid #aaa;
-    border-radius: 2px; }
+    border-radius: 2px;
+    -webkit-transition: all 1.5s ease-in; }
     @media screen and (min-width: 320px) and (max-width: 540px) {
       #content article {
         width: 25rem; } }
@@ -442,6 +436,10 @@ input {
           height: auto; }
       #content article div span:first-child {
         margin-left: 0; }
+  #content article:nth-child(odd) {
+    left: -5rem; }
+  #content article:nth-child(even) {
+    right: -5rem; }
 
 #duoshuoCommentForm {
   max-width: 40rem;
