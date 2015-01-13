@@ -1,10 +1,22 @@
 
-    (function () {
-        jQuery.easing.def = 'easeInOutQuad';
-    })();
 
-    function deviceIsPc () {
-        return parseInt($(window).width()) > 1000 ? true : false;
+
+
+
+    $(function () {
+        jQuery.easing.def = 'easeInOutQuad';
+        $('#phoneNav').css('height', $(window).height());
+
+    });
+
+    var userAgent = {
+        agent: navigator.userAgent,
+        isPC : function () {
+            return !this.isMobile() ? true : false;
+        },
+        isMobile: function () {
+            return this.agent.match(/Android/i) || this.agent.match(/iphone/i) ? true : false;
+        }
     }
 
     function deviceIsMobile (argument) {
@@ -57,9 +69,9 @@
         var $searchInput = $('#searchInput'),
             $searchBtn = $('#searchBtn');
 
-        if (deviceIsPc()) {
+        if (userAgent.isPC()) {
             $searchBtn.on('click', !flag ? _searchInputShow : _searchInputHide);
-        }else if (deviceIsMobile()) {
+        }else if (userAgent.isMobile()) {
             touch.on($searchBtn, 'tap', !flag ? _searchInputShow : _searchInputHide);
         }
 
@@ -97,35 +109,26 @@
 
         var $phoneNav = $('#phoneNav');
 
-        touch.on($('#phoneNavShowBtn'), 'hold tap doubletap', _phoneNavShowFunc);
-        
+        touch.on($('#phoneNavShowBtn'), 'hold tap doubletap', function () {
+            $('#phoneNav').css('height', $(window).height());
 
-        function _phoneNavShowFunc () {
-            $phoneNav.css('height', $(window).height());
-            $phoneNav.animate({
-                opacity: 1,
-                left: 0
-            }, 350, function () {
-                $('body').css('overflow-y', 'hidden');
-            });
-            // if (!!$phoneNav.addClass('animate')) {
-            //     $('html, body').css('overflow-y', 'hidden');  
-            //     alert($('body').css('overflow-y'));
-            // }
-        }
+            $phoneNav.css({'transform': 'translate3d(19.8rem, 0, 0)', 'opacity': 1});
+
+            $('body').css('overflow-y', 'hidden');  
+        });
 
     })();
 
 
     (function phoneNavHideFunc () {
+
         touch.on($('#phoneNavHideBtn'), 'hold tap doubletap', function () {
-            $('#phoneNav').animate({
-                opacity: 0,
-                left: '-18rem'
-            }, 350, function () {
-                $('body').css('overflow-y', 'auto');
-            });
+
+            $('#phoneNav').css({'transform': 'translate3d(-20rem, 0, 0)', 'opacity': 0, 'height': 0});
+
+            $('body').css('overflow-y', 'auto');  
         });
+
     })();
 
 
@@ -164,12 +167,17 @@
      */
     (function returnViewTopFunc () {
 
-        var $returnViewTopBtn = $('.returnViewTop i');
-            
+        var $returnViewHomeBtn = $('.toolBar i:first'),
+            $returnViewTopBtn = $('.toolBar i:last');
         
-        if (deviceIsMobile()) {
+        if (userAgent.isMobile()) {
+            $('#phoneNav').css({'transform': 'translate3d(-20rem, 0, 0)', 'opacity': 0, 'height': 0});
+            touch.on($returnViewHomeBtn, 'hold tap doubletap', _returnViewHomeFunc);
             touch.on($returnViewTopBtn, 'hold tap doubletap', _returnViewTopFunc);
-        }else if (deviceIsPc()) {
+        }
+
+        if (userAgent.isPC()) {
+            $returnViewHomeBtn.on('click', _returnViewHomeFunc);
             $returnViewTopBtn.on('click', _returnViewTopFunc);
         }
 
@@ -182,4 +190,12 @@
             }
         }
 
+        function _returnViewHomeFunc () {
+            if(!!window.location.hash) {
+                history.back(-1);
+            }
+        }
+
     })();
+
+

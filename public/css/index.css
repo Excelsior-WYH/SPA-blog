@@ -63,6 +63,9 @@
 .icon-icon:before {
   content: "\e607"; }
 
+.icon-fanhui:before {
+  content: "\e618"; }
+
 .icon-shouqi:before {
   content: "\e608"; }
 
@@ -93,6 +96,18 @@
 .icon-guanyuwo:before {
   content: "\e60f"; }
 
+html {
+  -webkit-text-size-adjust: none; }
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  background-color: #FCFAF2;
+  background-image: url(../images/texture.png);
+  overflow-x: hidden;
+  word-spacing: -1px; }
+
 img {
   max-width: 100%;
   height: auto;
@@ -107,24 +122,9 @@ a {
   text-decoration: none; }
 
 input {
-  border: 0;
-  outline: none; }
-
-body {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  background-color: #FCFAF2;
-  background-image: url(../images/texture.png);
-  overflow-x: hidden;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-perspective: 1000;
-  -moz-perspective: 1000;
-  -ms-perspective: 1000;
-  perspective: 1000; }
+  border: 0; }
+  input:focus {
+    outline: none; }
 
 @media only screen and (min-width: 320px) and (max-width: 360px) {
   html {
@@ -132,6 +132,9 @@ body {
 @media only screen and (min-width: 360px) and (max-width: 384px) {
   html {
     font-size: 80% !important; } }
+@media only screen and (min-width: 385px) and (max-width: 420px) {
+  html {
+    font-size: 90% !important; } }
 @media only screen and (min-width: 386px) and (max-width: 540px) {
   html {
     font-size: 86% !important; } }
@@ -187,83 +190,84 @@ body {
   height: auto !important;
   height: 100%; }
 
-#header {
-  margin-bottom: 3rem; }
-  #header .wrapper {
-    width: 100%;
-    min-height: 20rem;
-    background-color: #006284;
-    background-image: url(../images/texture.png);
-    background-size: cover; }
-    #header .wrapper .declare {
-      text-align: center;
-      padding-top: 4.2rem; }
+#header .wrapper {
+  width: 100%;
+  min-height: 20rem;
+  height: auto;
+  background-color: #1E88A8;
+  background-image: url(../images/texture.png);
+  background-size: cover;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15); }
+  #header .wrapper .declare {
+    text-align: center;
+    padding-top: 4.2rem; }
+    @media screen and (min-width: 320px) and (max-width: 540px) {
+      #header .wrapper .declare {
+        padding-top: 4.5rem; } }
+    #header .wrapper .declare img {
+      border-radius: 60%;
+      width: 130px;
+      height: 130px;
+      cursor: pointer;
+      -webkit-box-shadow: 0px 0px 20px #000000; }
+      #header .wrapper .declare img:hover {
+        -webkit-animation-name: fadeOutInOutSwirl;
+        -webkit-animation-duration: .3s; }
+    #header .wrapper .declare p {
+      padding: 0;
+      margin: 0;
+      margin-top: 1rem;
+      vertical-align: top;
+      font-weight: 300;
+      font-size: 2.4rem;
+      letter-spacing: .3rem;
+      color: #BDC0BA;
+      cursor: pointer;
+      font-family: "ExoThin", "Microsoft YaHei UI light"; }
       @media screen and (min-width: 320px) and (max-width: 540px) {
-        #header .wrapper .declare {
-          padding-top: 4.5rem; } }
-      #header .wrapper .declare img {
-        border-radius: 60%;
-        width: 130px;
-        height: 130px;
-        cursor: pointer;
-        -webkit-box-shadow: 0px 0px 20px #000000; }
-        #header .wrapper .declare img:hover {
-          -webkit-animation-name: fadeOutInOutSwirl;
-          -webkit-animation-duration: .3s; }
-      #header .wrapper .declare p {
-        padding: 0;
-        margin: 0;
-        margin-top: 1rem;
-        vertical-align: top;
-        font-weight: 500;
-        font-size: 2.4rem;
-        letter-spacing: .3rem;
-        color: #BDC0BA;
-        cursor: pointer; }
+        #header .wrapper .declare p {
+          font-size: 1.6rem; } }
+      #header .wrapper .declare p:hover {
+        transition: 1s ease-out;
+        color: #e84c3d; }
+      #header .wrapper .declare p del {
+        font-size: 2.4rem; }
         @media screen and (min-width: 320px) and (max-width: 540px) {
-          #header .wrapper .declare p {
+          #header .wrapper .declare p del {
             font-size: 1.6rem; } }
-        #header .wrapper .declare p:hover {
-          transition: 1s ease-out;
-          color: #e84c3d; }
-        #header .wrapper .declare p del {
-          font-size: 2.4rem; }
-          @media screen and (min-width: 320px) and (max-width: 540px) {
-            #header .wrapper .declare p del {
-              font-size: 1.6rem; } }
-        #header .wrapper .declare p i {
+        #header .wrapper .declare p del i {
           color: #00AA90;
           font-size: 2.6rem; }
           @media screen and (min-width: 320px) and (max-width: 540px) {
-            #header .wrapper .declare p i {
+            #header .wrapper .declare p del i {
               font-size: 1.6rem; } }
-    #header .wrapper form {
-      float: right;
-      height: 3rem;
-      line-height: 3.5rem;
-      margin-right: 1.2rem; }
+  #header .wrapper form {
+    float: right;
+    height: 3rem;
+    line-height: 3.5rem;
+    margin-right: 1.2rem; }
+    @media screen and (min-width: 320px) and (max-width: 540px) {
+      #header .wrapper form {
+        line-height: 4.5rem; } }
+    #header .wrapper form input {
+      width: 0;
+      height: 0.8rem;
+      border-radius: 10px;
+      padding: 0.25rem 0.3rem;
+      opacity: 0; }
       @media screen and (min-width: 320px) and (max-width: 540px) {
-        #header .wrapper form {
-          line-height: 4.5rem; } }
-      #header .wrapper form input {
-        width: 0;
-        height: 0.8rem;
-        border-radius: 10px;
-        padding: 0.25rem 0.3rem;
-        opacity: 0; }
-        @media screen and (min-width: 320px) and (max-width: 540px) {
-          #header .wrapper form input {
-            height: 1.4rem; } }
-        #header .wrapper form input:focus {
-          outline: none; }
-      #header .wrapper form i {
-        color: #BDC0BA;
-        display: inline-block;
-        cursor: pointer;
-        font-size: 1rem; }
-        @media screen and (min-width: 320px) and (max-width: 540px) {
-          #header .wrapper form i {
-            font-size: 1.6rem; } }
+        #header .wrapper form input {
+          height: 1.4rem; } }
+      #header .wrapper form input:focus {
+        outline: none; }
+    #header .wrapper form i {
+      color: #BDC0BA;
+      display: inline-block;
+      cursor: pointer;
+      font-size: 1rem; }
+      @media screen and (min-width: 320px) and (max-width: 540px) {
+        #header .wrapper form i {
+          font-size: 1.6rem; } }
 
 #mainNav {
   width: 50%;
@@ -305,29 +309,30 @@ body {
   left: 1rem;
   top: 1rem;
   display: none;
-  font-size: 2.8rem;
-  width: 2rem;
-  height: 2rem;
   cursor: pointer;
-  color: #BDC0BA;
-  transition: transform .5s ease-out; }
+  color: #BDC0BA; }
   @media screen and (min-width: 320px) and (max-width: 540px) {
     #phoneNavShowBtn {
       display: block;
-      font-size: 2.8rem; } }
+      font-size: 3.2rem; } }
 
-.animate {
-  -webkit-transform: translate3d(20rem, 0, 0);
-  opacity: 1; }
+.phoneNavShowTrans {
+  -webkit-opacity: 1;
+  -webkit-transform: translate3d(19.8rem, 0, 0); }
+
+.phoneNavHideTrans {
+  -webkit-opacity: 0;
+  -webkit-transform: translate3d(-20rem, 0, 0); }
 
 #phoneNav {
   width: 20rem;
   position: absolute;
   top: 0;
   left: -20rem;
-  background: #333;
+  background: #262a30;
+  -webkit-transition: all .2s ease-in;
   z-index: 9999;
-  -webkit-transition: -webkit-transform .3s ease-in; }
+  opacity: 0; }
   #phoneNav ul {
     width: 100%; }
     #phoneNav ul li {
@@ -347,9 +352,7 @@ body {
         border-radius: 0.8rem;
         padding-left: 0.5rem;
         margin: 0.2rem 0 0 2rem;
-        color: #000000; }
-        #phoneNav ul li input:focus {
-          outline: none; }
+        color: #000; }
       #phoneNav ul li #phoneNavHideBtn {
         cursor: pointer;
         font-size: 2rem; }
@@ -374,7 +377,8 @@ body {
   text-align: center;
   min-height: 18.2rem;
   height: auto;
-  padding-bottom: 3rem; }
+  padding: 3rem 0;
+  background-image: url("../images/texture.png"); }
   #content article {
     position: relative;
     margin: 0 auto 3rem;
@@ -385,8 +389,7 @@ body {
     width: 40rem;
     background: #FCFAF2;
     border: 1px solid #aaa;
-    border-radius: 0.6rem;
-    box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.2); }
+    border-radius: 2px; }
     @media screen and (min-width: 320px) and (max-width: 540px) {
       #content article {
         width: 25rem; } }
@@ -395,7 +398,7 @@ body {
       margin: 0;
       margin: 0.3rem 0 0.5rem;
       color: #515865;
-      font-family: "ExoThin";
+      font-family: "ExoThin", "Microsoft YaHei UI light";
       letter-spacing: 0.2rem;
       cursor: pointer; }
       #content article h2:hover {
@@ -407,27 +410,27 @@ body {
         color: #e32d40; }
     #content article p {
       font-size: 0.8rem;
-      font-family: "ExoRegular", 'Microsoft YaHei';
-      font-weight: lighter;
+      font-family: "ExoRegular", 'Microsoft YaHei UI light';
+      font-weight: 200;
       margin: 0.4rem 0.7rem 0 0.7rem;
       padding-bottom: 0.5rem;
       border-bottom: 1px solid #CCC;
-      letter-spacing: 0.2rem;
+      letter-spacing: 0.25rem;
+      text-indent: 1.6rem;
       text-align: left;
       color: #505255; }
       @media screen and (min-width: 320px) and (max-width: 540px) {
         #content article p {
-          font-size: 1rem;
-          font-weight: lighter; } }
-    #content article p:first-letter {
-      float: left;
-      font-size: 1.6rem;
-      font-weight: lighter;
-      color: #e32d40; }
+          font-size: 1.4rem;
+          font-weight: 100;
+          letter-spacing: 0.4rem; } }
     #content article div {
       font-size: 0.8rem;
       margin: 0.25rem 0.7rem;
       text-align: left; }
+      @media screen and (min-width: 320px) and (max-width: 540px) {
+        #content article div {
+          font-size: 1.2rem; } }
       #content article div span {
         margin-left: 0.4rem;
         cursor: pointer; }
@@ -513,9 +516,23 @@ body {
     #footer p a:nth-child(4) i {
       color: #FFC028; }
 
-.returnViewTop {
+.toolBar {
   width: 100%; }
-  .returnViewTop i {
+  .toolBar i:nth-child(1) {
+    position: fixed;
+    left: 5rem;
+    bottom: 1.2rem;
+    z-index: 4;
+    font-size: 3rem;
+    cursor: pointer; }
+    @media screen and (min-width: 320px) and (max-width: 540px) {
+      .toolBar i:nth-child(1) {
+        left: 3px;
+        bottom: 5px; } }
+    .toolBar i:nth-child(1):hover {
+      -webkit-animation-name: rocketShake;
+      -webkit-animation-duration: .5s; }
+  .toolBar i:nth-child(2) {
     position: fixed;
     right: 5rem;
     bottom: 1.2rem;
@@ -523,10 +540,10 @@ body {
     font-size: 3rem;
     cursor: pointer; }
     @media screen and (min-width: 320px) and (max-width: 540px) {
-      .returnViewTop i {
+      .toolBar i:nth-child(2) {
         right: 3px;
         bottom: 5px; } }
-    .returnViewTop i:hover {
+    .toolBar i:nth-child(2):hover {
       -webkit-animation-name: rocketShake;
       -webkit-animation-duration: .5s; }
 

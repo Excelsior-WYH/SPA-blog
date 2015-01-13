@@ -63,6 +63,8 @@
 
 .icon-icon:before { content: "\e607"; }
 
+.icon-fanhui:before { content: "\e618"; }
+
 .icon-shouqi:before { content: "\e608"; }
 
 .icon-huanyipi:before { content: "\e609"; }
@@ -84,6 +86,28 @@
 .icon-guanyuwo:before { content: "\e60f"; }
 
 
+
+html {
+    -webkit-text-size-adjust: none;
+}
+body {
+    @include pmClear;
+    height: 100%;
+    background-color: #FCFAF2;
+    background-image: url(../images/texture.png);
+    overflow-x: hidden;
+    // -webkit-backface-visibility: hidden;
+    // -moz-backface-visibility: hidden;
+    // -ms-backface-visibility: hidden;
+    // backface-visibility: hidden;
+    // -webkit-perspective: 1000;
+    // -moz-perspective: 1000;
+    // -ms-perspective: 1000;
+    // perspective: 1000;
+    // -webkit-font-smoothing: antialiased;        
+    word-spacing: -1px;                  
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -98,23 +122,9 @@ a {
 }
 input {
     border: 0;
-    outline: none;
-}
-body {
-    @include pmClear;
-    height: 100%;
-    background-color: #FCFAF2;
-    background-image: url(../images/texture.png);
-    overflow-x: hidden;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    backface-visibility: hidden;
-     
-    -webkit-perspective: 1000;
-    -moz-perspective: 1000;
-    -ms-perspective: 1000;
-    perspective: 1000;
+    &:focus {
+        outline: none;
+    }
 }
 @media only screen and (min-width: 320px) and (max-width: 360px) {
     html {
@@ -124,6 +134,11 @@ body {
 @media only screen and (min-width: 360px) and (max-width: 384px) {
     html {
         font-size: 80%!important;
+    }
+}
+@media only screen and (min-width: 385px) and (max-width: 420px) {
+    html {
+        font-size: 90%!important;
     }
 }
 @media only screen and (min-width: 386px) and (max-width: 540px) {
@@ -217,13 +232,14 @@ body {
 
 
 #header {
-    margin-bottom: 3rem;
     .wrapper {
         width: 100%;
         min-height: 20rem;
-        background-color: #006284;
+        height: auto;
+        background-color: #1E88A8;
         background-image: url(../images/texture.png);
         background-size: cover;
+        box-shadow: 0 1px 2px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.15);
         .declare {
             text-align: center;
             padding-top: 4.2rem;
@@ -246,11 +262,12 @@ body {
                 @include pmClear;
                 margin-top: 1rem;
                 vertical-align: top;
-                font-weight: 500;
+                font-weight: 300;
                 font-size: 2.4rem;
                 letter-spacing: .3rem;
                 color: #BDC0BA;
                 cursor: pointer;
+                font-family: "ExoThin", "Microsoft YaHei UI light";
                 @media screen and (min-width: 320px) and (max-width: 540px){
                     font-size: 1.6rem;
                 }
@@ -263,12 +280,12 @@ body {
                     @media screen and (min-width: 320px) and (max-width: 540px){
                         font-size: 1.6rem;
                     }
-                }
-                i {
-                    color: #00AA90;
-                    font-size: 2.6rem;
-                    @media screen and (min-width: 320px) and (max-width: 540px){
-                        font-size: 1.6rem;
+                    i {
+                        color: #00AA90;
+                        font-size: 2.6rem;
+                        @media screen and (min-width: 320px) and (max-width: 540px){
+                            font-size: 1.6rem;
+                        }
                     }
                 }
             }
@@ -353,15 +370,11 @@ body {
     left: 1rem;
     top: 1rem;
     display: none;
-    font-size: 2.8rem;
-    width: 2rem;
-    height: 2rem;
     cursor: pointer;
     color: #BDC0BA;
-    transition: transform .5s ease-out;
     @media screen and (min-width: 320px) and (max-width: 540px){
         display: block;
-        font-size: 2.8rem;
+        font-size: 3.2rem;
     }
     &:hover {
         
@@ -369,9 +382,13 @@ body {
     }
 }
 
-.animate {
-    -webkit-transform: translate3d(20rem, 0, 0);
-    opacity: 1;
+.phoneNavShowTrans {
+    -webkit-opacity: 1;
+    -webkit-transform: translate3d(19.8rem, 0, 0);
+}
+.phoneNavHideTrans {
+    -webkit-opacity: 0;
+    -webkit-transform: translate3d(-20rem, 0, 0);
 }
 
 #phoneNav {
@@ -379,9 +396,10 @@ body {
     position: absolute;
     top: 0;
     left: -20rem;
-    background: #333;
+    background: #262a30;
+    -webkit-transition: all .2s ease-in;
     z-index: 9999;
-    -webkit-transition: -webkit-transform .3s ease-in;
+    opacity: 0;
     ul {
         width: 100%;
         li {
@@ -402,10 +420,7 @@ body {
                 border-radius: 0.8rem;
                 padding-left: 0.5rem;
                 margin:0.2rem 0 0 2rem;
-                color: #000000;
-                &:focus {
-                    outline: none;
-                }
+                color: #000;
             }
             #phoneNavHideBtn {
                 cursor: pointer;
@@ -438,7 +453,8 @@ body {
     text-align: center;
     min-height: 18.2rem;
     height: auto;
-    padding-bottom: 3rem;
+    padding: 3rem 0;
+    background-image: url('../images/texture.png');
     article {
         position: relative;
         margin: 0 auto 3rem;
@@ -452,13 +468,14 @@ body {
         }
         background: #FCFAF2;
         border: 1px solid #aaa;
-        border-radius: 0.6rem;
-        box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.2);
+        border-radius: 2px;
+        // box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.2);
+        // box-shadow: 0 1px 10px #58B1B9;
         h2 {
             @include pmClear;
             margin: 0.3rem 0 0.5rem;
             color: rgb(81, 88, 101);
-            font-family: "ExoThin";
+            font-family: "ExoThin", "Microsoft YaHei UI light";
             letter-spacing: 0.2rem;
             cursor: pointer;
             &:hover {
@@ -473,27 +490,26 @@ body {
         }
         p {
             font-size: 0.8rem;
-            font-family: "ExoRegular", 'Microsoft YaHei';
-            font-weight: lighter;
+            font-family: "ExoRegular", 'Microsoft YaHei UI light';
+            font-weight: 200;
             margin: 0.4rem 0.7rem 0 0.7rem;
             padding-bottom: 0.5rem;
             border-bottom: 1px solid #CCC;
-            letter-spacing: 0.2rem;
+            letter-spacing: 0.25rem;
+            text-indent: 1.6rem;
             text-align: left;
             color: #505255;
             @media screen and (min-width: 320px) and (max-width: 540px) {
-                font-size: 1rem;
-                font-weight: lighter;
+                font-size: 1.4rem;
+                font-weight: 100;
+                letter-spacing: 0.4rem;
             }
-        }
-        p:first-letter {
-            float: left;
-            font-size: 1.6rem;
-            font-weight: lighter;
-            color: #e32d40;
         }
         div {
             font-size: 0.8rem;
+            @media screen and (min-width: 320px) and (max-width: 540px) {
+                font-size: 1.2rem;
+            }
             margin: 0.25rem 0.7rem;
             text-align: left;
             span {
@@ -513,7 +529,6 @@ body {
             }
         }
     }
-    
 }
 
 #duoshuoCommentForm {
@@ -618,9 +633,25 @@ body {
 }
 
 
-.returnViewTop {
+.toolBar {
     width: 100%;
-    i {
+    i:nth-child(1) {
+        position: fixed;
+        left: 5rem;
+        bottom: 1.2rem;
+        @media screen and (min-width: 320px) and (max-width: 540px) {
+            left: 3px;
+            bottom: 5px;
+        }
+        z-index: 4;
+        font-size: 3rem;
+        cursor: pointer;
+        &:hover {
+            -webkit-animation-name: rocketShake;  
+            -webkit-animation-duration: .5s;
+        }
+    }
+    i:nth-child(2) {
         position: fixed;
         right: 5rem;
         bottom: 1.2rem;
