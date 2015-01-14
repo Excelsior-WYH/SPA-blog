@@ -27,8 +27,8 @@
             });
         },
         events: {
-            'click #content .comment': 'postCommentFunc', // 发表评论
-            'click #content .praise': 'articlePraiseFunc', // 发表评论
+            'click .comment': 'postCommentFunc', // 发表评论
+            'click .praise': 'articlePraiseFunc', // 发表评论
             'click #searchBtn': 'searchArticleFunc'
         },
         postCommentFunc: function (event) {

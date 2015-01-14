@@ -5,8 +5,24 @@
 
     $(function () {
         jQuery.easing.def = 'easeInOutQuad';
-        $('#phoneNav').css('height', $(window).height());
-
+        $(document).on('scroll', function () {
+            if ($('body').scrollTop() > $('#header').height()) {
+                $('#mainNav').css({
+                    display: 'block',
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    zIndex: 20,
+                    background: '#0666c5',
+                    backgroundColor: '#0767c8',
+                    backgroundImage: '-webkit-linear-gradient(top,#086ed5,#055db5)',
+                    borderBottom: '1px solid #044e97',
+                    boxShadow: '0 1px 2px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.15)'
+                });
+            }else{
+                $('#mainNav').hide();
+            }
+        });
     });
 
     var userAgent = {
@@ -157,22 +173,16 @@
      * [returnViewTopFunc 回到顶部]
      * @return {[type]} [description]
      */
-    (function returnViewTopFunc () {
+    (function toolBarFunc () {
 
-        var $returnViewHomeBtn = $('.toolBar i:first'),
-            $returnViewTopBtn = $('.toolBar i:last');
-        
-        if (userAgent.isMobile()) {
-            touch.on($returnViewHomeBtn, 'hold tap doubletap', _returnViewHomeFunc);
-            touch.on($returnViewTopBtn, 'hold tap doubletap', _returnViewTopFunc);
-        }
 
-        if (userAgent.isPC()) {
-            $returnViewHomeBtn.on('click', _returnViewHomeFunc);
-            $returnViewTopBtn.on('click', _returnViewTopFunc);
-        }
+        var $goViewed = $('.toolBar i:first'),
+            $goViewTop= $('.toolBar i:last');
 
-        function _returnViewTopFunc (event) {
+        userAgent.isMobile() ? touch.on($goViewed, 'tap', _goViewedFunc) : $goViewed.on('click', _goViewedFunc);
+        userAgent.isPC() ? touch.on($goViewTop, 'tap', _goViewTopFunc) : $goViewTop.on('click', _goViewTopFunc);
+
+        function _goViewTopFunc (event) {
             var $scrollTop = $('body').scrollTop();
             if($scrollTop > 50) {
                 $('html, body').animate({
@@ -181,7 +191,7 @@
             }
         }
 
-        function _returnViewHomeFunc () {
+        function _goViewedFunc () {
             if(!!window.location.hash) {
                 history.back(-1);
             }
