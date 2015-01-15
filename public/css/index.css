@@ -43,6 +43,9 @@
   content: "\e617"; }
 
 .icon-liulan:before {
+  content: "\e619"; }
+
+.icon-liulan1:before {
   content: "\e603"; }
 
 .icon-ux14006382562102623:before {
@@ -50,6 +53,9 @@
 
 .icon-github1:before {
   content: "\e613"; }
+
+.icon-shijian:before {
+  content: "\e61a"; }
 
 .icon-zhankai:before {
   content: "\e605"; }
@@ -62,6 +68,9 @@
 
 .icon-icon:before {
   content: "\e607"; }
+
+.icon-tag3:before {
+  content: "\e61b"; }
 
 .icon-fanhui:before {
   content: "\e618"; }
@@ -106,7 +115,10 @@ body {
   background-color: #FCFAF2;
   background-image: url(../images/texture.png);
   overflow-x: hidden;
-  word-spacing: -1px; }
+  -webkit-font-smoothing: antialiased;
+  word-spacing: -1px;
+  font-family: "ExoThin", Ubuntu,Consolas, "Microsoft YaHei", Verdana, Tahoma, Arial, sans-serif;
+  font-weight: normal; }
 
 img {
   max-width: 100%;
@@ -120,6 +132,9 @@ ul {
 
 a {
   text-decoration: none; }
+
+i {
+  cursor: pointer; }
 
 input {
   border: 0; }
@@ -147,9 +162,12 @@ input {
 @media only screen and (min-width: 1024px) {
   html {
     font-size: 120% !important; } }
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 1366px) {
   html {
     font-size: 125% !important; } }
+@media only screen and (min-width: 1920px) {
+  html {
+    font-size: 195% !important; } }
 @-webkit-keyframes fadeOutInOutSwirl {
   0% {
     opacity: 1; }
@@ -192,68 +210,67 @@ input {
 
 #header .wrapper {
   width: 100%;
-  min-height: 20rem;
+  min-height: 16rem;
   height: auto;
-  background-color: #1E88A8;
-  background-image: url(../images/texture.png);
-  background-size: cover;
+  padding-bottom: 1rem;
+  background: url("../images/header.gif") repeat #4c7298;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15); }
   #header .wrapper .declare {
     text-align: center;
     padding-top: 4.2rem; }
     @media screen and (min-width: 320px) and (max-width: 540px) {
       #header .wrapper .declare {
-        padding-top: 4.5rem; } }
+        padding-top: 3.3rem; } }
     #header .wrapper .declare img {
       border-radius: 60%;
-      width: 130px;
-      height: 130px;
+      width: 100px;
+      height: 100px;
       cursor: pointer;
-      -webkit-box-shadow: 0px 0px 20px #000000; }
+      -webkit-box-shadow: 0px 0px 25px #000000;
+      -webkit-transition: -webkit-transform 0.4s ease-out;
+      transition: transform 0.4s ease-out;
+      -moz-transition: -moz-transform 0.4s ease-out; }
       #header .wrapper .declare img:hover {
-        -webkit-animation-name: fadeOutInOutSwirl;
-        -webkit-animation-duration: .3s; }
+        -webkit-box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), inset 0 0 20px white;
+        transform: rotateZ(360deg);
+        -webkit-transform: rotateZ(360deg);
+        -moz-transform: rotateZ(360deg); }
     #header .wrapper .declare p {
       padding: 0;
       margin: 0;
-      margin-top: 1rem;
+      padding-top: 0.7rem;
       vertical-align: top;
       font-weight: 300;
-      font-size: 2.4rem;
+      font-size: 2rem;
       letter-spacing: .3rem;
-      color: #BDC0BA;
+      color: #fff;
       cursor: pointer;
-      font-family: "ExoThin", "Microsoft YaHei UI light"; }
+      font-family: "ExoThin", Ubuntu,Consolas, "Microsoft YaHei", Verdana, Tahoma, Arial, sans-serif; }
       @media screen and (min-width: 320px) and (max-width: 540px) {
         #header .wrapper .declare p {
           font-size: 1.6rem; } }
-      #header .wrapper .declare p:hover {
-        transition: 1s ease-out;
-        color: #e84c3d; }
       #header .wrapper .declare p del {
-        font-size: 2.4rem; }
+        font-size: 1rem; }
         @media screen and (min-width: 320px) and (max-width: 540px) {
           #header .wrapper .declare p del {
-            font-size: 1.6rem; } }
+            font-size: 1rem; } }
         #header .wrapper .declare p del i {
           color: #00AA90;
-          font-size: 2.6rem; }
+          font-size: 1.2rem; }
           @media screen and (min-width: 320px) and (max-width: 540px) {
             #header .wrapper .declare p del i {
-              font-size: 1.6rem; } }
+              font-size: 1rem; } }
+    #header .wrapper .declare p:last-child {
+      font-size: 1rem; }
 
 #mainNav {
   width: 100%;
   height: 3rem;
-  float: left;
-  font-family: "ExoRegular"; }
-  @media screen and (min-width: 320px) and (max-width: 540px) {
-    #mainNav {
-      display: none; } }
+  float: left; }
   #mainNav ul {
     margin: 0 auto; }
     #mainNav ul li {
-      float: left;
+      display: inline-block;
       margin: 1rem 0.8rem; }
       #mainNav ul li a {
         display: block;
@@ -269,88 +286,162 @@ input {
           color: #E87A90; }
     #mainNav ul li:last-child {
       float: right; }
-  #mainNav i {
-    float: right;
-    margin: 1.3rem 5rem 0 0;
-    font-size: 1.2rem;
-    color: #BDC0BA;
-    cursor: pointer; }
+      #mainNav ul li:last-child form input {
+        width: 0;
+        height: 0.8rem;
+        border-radius: 10px;
+        padding: 0.25rem 0.3rem;
+        opacity: 0; }
+        @media screen and (min-width: 320px) and (max-width: 540px) {
+          #mainNav ul li:last-child form input {
+            height: 1.4rem; } }
+        #mainNav ul li:last-child form input:focus {
+          outline: none; }
+      #mainNav ul li:last-child form i {
+        color: #BDC0BA;
+        display: inline-block;
+        font-size: 1.5rem;
+        margin-left: 0.4rem; }
+        @media screen and (min-width: 320px) and (max-width: 540px) {
+          #mainNav ul li:last-child form i {
+            font-size: 1.6rem; } }
+
+.floatNav {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  opacity: .88;
+  background-color: #FBFBFB;
+  box-shadow: 0 0 2px #bbb;
+  border-bottom: 1px solid #ccc; }
 
 #content {
+  padding-bottom: 7rem;
+  min-height: 20rem;
+  height: auto;
+  background-image: url("../images/texture.jpg");
+  background-color: #F4F4F7; }
+
+#articles, .article {
+  padding: 0;
+  margin: 0;
   margin: 0 auto;
   text-align: center;
-  min-height: 18.2rem;
-  height: auto;
-  padding: 3rem 0;
-  background-image: url("../images/texture.png"); }
-  #content article {
-    position: relative;
-    margin: 0 auto 3rem;
-    padding-top: 0.4rem;
-    min-height: 1rem;
-    overflow-y: hidden;
+  min-height: 8rem;
+  padding-bottom: 3rem; }
+  #articles aside, .article aside {
+    width: 5rem;
+    vertical-align: top;
+    display: inline-block; }
+    @media screen and (min-width: 320px) and (max-width: 540px) {
+      #articles aside, .article aside {
+        display: none; } }
+    #articles aside p, .article aside p {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      color: #fbfbfb;
+      font-size: 0.5rem;
+      font-family: "ExoThin", Ubuntu,Consolas, "Microsoft YaHei", Verdana, Tahoma, Arial, sans-serif;
+      font-weight: 300;
+      text-align: left;
+      border-radius: 3px;
+      margin-bottom: 1rem; }
+      #articles aside p i, .article aside p i {
+        flaot: left;
+        margin: 0 0.3rem; }
+    #articles aside p:first-child, .article aside p:first-child {
+      background: #7ab277; }
+    #articles aside p:last-child, .article aside p:last-child {
+      background: #9fa09c; }
+  #articles article, .article article {
+    margin: 0 auto;
+    min-height: 7rem;
     width: 40rem;
-    opacity: 0;
-    background: #FCFAF2;
+    color: #333;
+    display: inline-block;
+    background-color: #fff;
     border: 1px solid #aaa;
+    border-top: 0;
     border-radius: 2px;
     -webkit-transition: all .6s ease-in; }
     @media screen and (min-width: 320px) and (max-width: 540px) {
-      #content article {
-        width: 25rem; } }
-    #content article h2 {
+      #articles article, .article article {
+        width: 92%;
+        border-radius: 0; } }
+    #articles article h2, .article article h2 {
       padding: 0;
       margin: 0;
-      margin: 0.3rem 0 0.5rem;
-      color: #515865;
+      padding: 0.25rem 0.5rem;
+      text-align: left;
+      background-color: #4c7298;
+      background-image: url("../images/texture.png");
+      color: #eee;
       font-family: "ExoThin", "Microsoft YaHei UI light";
+      font-size: 1.3rem;
       letter-spacing: 0.2rem;
       cursor: pointer; }
-      #content article h2:hover {
-        transition: 1s color ease-out;
-        text-shadow: 0.1rem 0.1rem 0.1rem #fff;
-        color: #e32d40; }
-      #content article h2:visited {
-        transition: 1s;
-        color: #e32d40; }
-    #content article p {
-      font-size: 0.8rem;
-      font-family: "ExoRegular", 'Microsoft YaHei UI light';
-      font-weight: 200;
-      margin: 0.4rem 0.7rem 0 0.7rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid #CCC;
-      letter-spacing: 0.25rem;
-      text-indent: 1.6rem;
-      text-align: left;
-      color: #505255; }
       @media screen and (min-width: 320px) and (max-width: 540px) {
-        #content article p {
-          font-size: 1.4rem;
+        #articles article h2, .article article h2 {
+          padding: 0.5rem; } }
+      @media screen and (min-width: 320px) and (max-width: 540px) {
+        #articles article h2, .article article h2 {
+          font-size: 1.8rem; } }
+      #articles article h2:hover, .article article h2:hover {
+        transition: all 1s ease-out;
+        text-shadow: 0.1rem 0.1rem 0.1rem #fff;
+        color: #fff; }
+    #articles article p, .article article p {
+      padding: 0;
+      margin: 0;
+      font-size: 0.7rem;
+      font-family: "ExoRegular", Ubuntu,Consolas,"Microsoft YaHei",Verdana,Tahoma,Arial,sans-serif;
+      font-weight: 400;
+      padding: 1rem;
+      border-bottom: 1px solid #CCC;
+      letter-spacing: 0.2rem;
+      text-align: left;
+      color: #333; }
+      @media screen and (min-width: 320px) and (max-width: 540px) {
+        #articles article p, .article article p {
+          font-size: 1.3rem;
           font-weight: 100;
           letter-spacing: 0.4rem; } }
-    #content article div {
+    #articles article div, .article article div {
+      height: 2rem;
       font-size: 0.8rem;
-      margin: 0.25rem 0.7rem;
       text-align: left; }
       @media screen and (min-width: 320px) and (max-width: 540px) {
-        #content article div {
-          font-size: 1.2rem; } }
-      #content article div span {
-        margin-left: 0.4rem;
-        cursor: pointer; }
-        #content article div span b {
+        #articles article div, .article article div {
+          font-size: 1.2rem;
+          height: 3rem;
+          line-height: 3rem; } }
+      #articles article div span, .article article div span {
+        float: left;
+        cursor: pointer;
+        display: block;
+        padding: 0.1rem 0.8rem;
+        height: 100%;
+        text-align: center;
+        border-right: 1px solid #ccc; }
+        #articles article div span b, .article article div span b {
+          line-height: 2rem;
           font-weight: lighter;
           font-family: "ExoRegular"; }
-        #content article div span img {
-          width: auto;
-          height: auto; }
-      #content article div span:first-child {
-        margin-left: 0; }
-  #content article:nth-child(odd) {
-    left: -5rem; }
-  #content article:nth-child(even) {
-    right: -5rem; }
+      #articles article div span:last-child, .article article div span:last-child {
+        float: right;
+        border-right: 0;
+        border-left: 1px solid #ccc; }
+        #articles article div span:last-child:hover, .article article div span:last-child:hover {
+          background-color: #0079bc;
+          transition: all 0.4s ease-in; }
+
+#articles:first-child, .article:first-child {
+  margin-top: 4rem; }
 
 #duoshuoCommentForm {
   max-width: 40rem;
@@ -393,10 +484,8 @@ input {
   width: 100%;
   height: 5rem;
   padding: .5rem 0;
-  background-color: #262a30;
-  background-image: url(../images/texture.png);
-  bottom: 0;
-  clear: both; }
+  background-color: #1C2429;
+  background-image: url(../images/texture.png); }
   #footer p:first-child {
     color: #999; }
   #footer p {
@@ -427,31 +516,30 @@ input {
 
 .toolBar {
   width: 100%; }
-  .toolBar i:nth-child(1) {
-    position: fixed;
-    left: 5rem;
-    bottom: 1.2rem;
+  .toolBar i {
     z-index: 4;
     font-size: 3rem;
-    cursor: pointer; }
+    color: #505255;
+    position: fixed;
+    bottom: 1.2rem;
+    transition: all .5s ease-in; }
+    @media screen and (min-width: 320px) and (max-width: 540px) {
+      .toolBar i {
+        bottom: 5px; } }
+  .toolBar i:nth-child(1) {
+    left: 5rem; }
     @media screen and (min-width: 320px) and (max-width: 540px) {
       .toolBar i:nth-child(1) {
-        left: 3px;
-        bottom: 5px; } }
+        left: 3px; } }
     .toolBar i:nth-child(1):hover {
-      -webkit-animation-name: rocketShake;
+      -webkit-animation-name: jellyShake;
       -webkit-animation-duration: .5s; }
   .toolBar i:nth-child(2) {
-    position: fixed;
     right: 5rem;
-    bottom: 1.2rem;
-    z-index: 4;
-    font-size: 3rem;
-    cursor: pointer; }
+    opacity: 0; }
     @media screen and (min-width: 320px) and (max-width: 540px) {
       .toolBar i:nth-child(2) {
-        right: 3px;
-        bottom: 5px; } }
+        right: 3px; } }
     .toolBar i:nth-child(2):hover {
       -webkit-animation-name: rocketShake;
       -webkit-animation-duration: .5s; }

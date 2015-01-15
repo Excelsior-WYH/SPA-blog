@@ -6,24 +6,24 @@
     $(function () {
         jQuery.easing.def = 'easeInOutQuad';
         $(document).on('scroll', function () {
+
             if ($('body').scrollTop() > $('#header').height()) {
-                $('#mainNav').css({
-                    display: 'block',
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    zIndex: 20,
-                    background: '#0666c5',
-                    backgroundColor: '#0767c8',
-                    backgroundImage: '-webkit-linear-gradient(top,#086ed5,#055db5)',
-                    borderBottom: '1px solid #044e97',
-                    boxShadow: '0 1px 2px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.15)'
-                });
-            }else{
-                $('#mainNav').hide();
+                $('.toolBar i:last').css('opacity', 1);
+                $('#mainNav').addClass('floatNav');
+                $('#mainNav ul li:last').css('display', 'none');
+                $('#mainNav ul').css('text-align', 'center');
+                $('#mainNav ul li a').css('color', '#333');
+            }else {
+                $('.toolBar i:last').css('opacity', 0);
+                $('#mainNav').removeClass('floatNav');
+                $('#mainNav ul li:last').show();
+                $('#mainNav ul').css('text-align', 'left');
+                $('#mainNav ul li a').css('color', '#D9D9D9');
             }
         });
     });
+    
+
 
     var userAgent = {
         agent: navigator.userAgent,
@@ -35,9 +35,6 @@
         }
     }
 
-    function deviceIsMobile (argument) {
-        return $(window).width() > 310 && $(window).width() < 520  ? true : false;
-    }
 
     function showWithAnimate(element, time){
         element.animate({
@@ -160,14 +157,6 @@
 
 
 
-    function articleShowAnimate (element, position) {
-        if(position == 'left') {
-            $(element).css({'transform': 'translate3d(5rem, 0, 0)', 'opacity': 1});
-        }else if (position == 'right') {
-            $(element).css({'transform': 'translate3d(-5rem, 0, 0)', 'opacity': 1});
-        }
-    }
-
 
     /**
      * [returnViewTopFunc 回到顶部]
@@ -179,24 +168,31 @@
         var $goViewed = $('.toolBar i:first'),
             $goViewTop= $('.toolBar i:last');
 
-        userAgent.isMobile() ? touch.on($goViewed, 'tap', _goViewedFunc) : $goViewed.on('click', _goViewedFunc);
-        userAgent.isPC() ? touch.on($goViewTop, 'tap', _goViewTopFunc) : $goViewTop.on('click', _goViewTopFunc);
 
-        function _goViewTopFunc (event) {
-            var $scrollTop = $('body').scrollTop();
-            if($scrollTop > 50) {
-                $('html, body').animate({
-                    scrollTop: 0
-                }, $scrollTop / 0.5);
-            }
-        }
+         if(userAgent.isPC()) {
+            $goViewed.on('click', _goViewedFunc);
+            $goViewTop.on('click', _goViewTopFunc);
+         }
+
+         if(userAgent.isMobile()) {
+            touch.on($goViewTop, 'tap', _goViewTopFunc);
+            touch.on($goViewed, 'tap', _goViewedFunc); 
+         }
 
         function _goViewedFunc () {
             if(!!window.location.hash) {
                 history.back(-1);
             }
-        }
+        }   
 
+        function _goViewTopFunc (event) {
+            var $scrollTop = $('body').scrollTop();
+            if($scrollTop > 100) {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, $scrollTop / 1);
+            }
+        }
     })();
 
-
+    

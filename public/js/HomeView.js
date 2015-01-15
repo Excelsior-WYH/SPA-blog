@@ -16,9 +16,6 @@
                     if(collection.models){
                         var template = that.template({articles: response});
                         $(that.el).html(template); // 主体
-                        $.each($('#content article'), function (index, article) {
-                            index % 2 === 0 ? articleShowAnimate(article, 'left') : articleShowAnimate(article, 'right');
-                        });
                     }
                 },
                 error: function () {
@@ -95,18 +92,6 @@
         pushViewData: function (_id, number) {
             var template = this.template({article: c_articles.get(_id).attributes});
             $(this.el).html(template);
-            // alert($('#article article').width());
-            // alert();
-            // var $article = $('#article article');
-            // var height = $article.css('height');
-            // $article.css('height', 0);
-            // $article.animate({
-            //     'opacity': 1,
-            //     'height': height + number
-            // }, {
-            //     easing: 'easeInOutQuad',
-            //     duration: 2700
-            // });
         },
         commentFormShowFunc: function (event) {
             

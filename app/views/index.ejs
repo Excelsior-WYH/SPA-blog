@@ -20,6 +20,7 @@
                 
                 <div class="declare">
                     <img src="/images/d.jpg" alt="Excelsior" width="130" height="130"/>
+                    <p>I'm a Coner Man</p>
                     <p>我是要成为<del>代码<i class="iconfont">&#xe617;</i></del>"码农"的男人</p>
                 </div>
             </div>
@@ -45,63 +46,54 @@
 
     <script type="text/template" id="T_Index">
         <% articles.forEach(function (article, index) { %>
-            <article>
-                <a href="#detail/<%= article._id %>"><h2 data-id="<%= article._id %>"><%= article.title %></h2></a>
-                <p><%= article.content %></p>
-                <div>
-                    <span>
-                        <i class="iconfont">&#xe610;</i>
-                        <b>
-                            <%= 
-                                GetLunarDay(new Date(article.postDate).getFullYear(), new Date(article.postDate).getMonth() + 1, new Date(article.postDate).getDay())
-                            %>
-                         </b>
-                    </span>
-                    <span>
-                        <i class="iconfont">&#xe600;</i>
-                        <b>10</b>
-                    </span>
-                    <span class="comment">
-                        <i class="iconfont">&#xe602;</i>
-                        <b>10</b>
-                    </span>
-                    <span class="praise">
-                        <i class="iconfont">&#xe601;</i>
-                        <b><%= article.praiseCount %></b>
-                    </span>
-                </div>
-            </article>
+            <section id="articles">
+                <aside>
+                    <p><i class="iconfont">&#xe61b;</i><strong>JavaScript</strong></p>
+                    <p><i class="iconfont">&#xe61a;</i><strong>初二</strong></p>
+                </aside>
+                <article>
+                    <a href="#detail/<%= article._id %>"><h2 data-id="<%= article._id %>"><%= article.title %></h2></a>
+                    <p><%= article.content %></p>
+                    <div>
+                        <span>
+                            <i class="iconfont">&#xe619;</i>
+                            <b>10</b>
+                        </span>
+                        <span class="praise">
+                            <i class="iconfont">&#xe601;</i>
+                            <b><%= article.praiseCount %></b>
+                        </span>
+                        <span class="read">
+                            <b>Read More</b>
+                        </span>
+                    </div>
+                </article>
+            </section>
         <%  }); %>
     </script>
     
 
     <script type="text/template" id="T_ArticleDetail">
-        <section>
+        <section class="article">
             <article>
                 <a href=""><h2 data-id="<%= article._id %>"><%= article.title %></h2></a>
                 <p><%= article.content %></p>
                 <div>
                     <span>
-                        <i class="iconfont">&#xe610;</i>
-                        <b>2014-12-23</b>
+                        <i class="iconfont">&#xe61b;</i>
+                        <b>jave</b>
                     </span>
-                    <span>
-                        <i class="iconfont">&#xe600;</i>
-                        <b>10</b>
-                    </span>
-                    <span class="articleCommentBtn" data-id="<%= article._id %>">
-                        <i class="iconfont">&#xe602;</i>
-                        <b>10</b>
-                    </span>
-                    <span class="praise" data-id="<%= article._id %>">
+                    <span class="praise">
                         <i class="iconfont">&#xe601;</i>
                         <b><%= article.praiseCount %></b>
+                    </span>
+                    <span class="commentFormShowBtn">
+                        <i class="iconfont">&#xe602;</i>
+                        <b>评论s</b>
                     </span>
                 </div>
             </article>
         </section>
-
-        <button class="commentFormShowBtn">dsd</button>
 
         <div id="duoshuoCommentForm"></div>
     </script>
